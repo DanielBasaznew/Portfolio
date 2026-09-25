@@ -1,5 +1,6 @@
 import React from 'react';
 import { GraduationCap, Calendar, Award, Sparkles } from 'lucide-react';
+import { SpotlightCard } from '../../components/ui/SpotlightCard';
 
 /**
  * EducationCard component
@@ -7,12 +8,11 @@ import { GraduationCap, Calendar, Award, Sparkles } from 'lucide-react';
  */
 export const EducationCard = ({ edu }) => {
   return (
-    <article
-      className={`rounded-md p-4 sm:p-6 transition-all duration-200 border ${
-        edu.isCurrent
-          ? 'bg-surface-card/95 border-brand-indigo/40 shadow-card hover:border-brand-indigo/60'
-          : 'bg-surface-card/80 border-border-medium hover:border-border-strong hover:bg-surface-card'
-      }`}
+    <SpotlightCard
+      as="article"
+      spotlightColor={edu.isCurrent ? 'indigo' : 'cyan'}
+      contentClassName="p-4 sm:p-6"
+      className={edu.isCurrent ? 'border-brand-indigo/40' : 'border-border-medium'}
       aria-labelledby={`edu-title-${edu.id}`}
     >
       {/* Top Header Bar */}
@@ -100,6 +100,6 @@ export const EducationCard = ({ edu }) => {
       <p className="font-sans text-xs sm:text-[13px] text-content-secondary leading-relaxed pt-1">
         {edu.focus}
       </p>
-    </article>
+    </SpotlightCard>
   );
 };

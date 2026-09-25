@@ -2,6 +2,7 @@ import React from 'react';
 import { Mic } from 'lucide-react';
 import { GithubIcon } from '../../components/icons/GithubIcon';
 import { Button } from '../../components/ui/Button';
+import { SpotlightCard } from '../../components/ui/SpotlightCard';
 
 /**
  * SecondaryProjectCard component
@@ -9,8 +10,11 @@ import { Button } from '../../components/ui/Button';
  */
 export const SecondaryProjectCard = ({ project }) => {
   return (
-    <article
-      className="p-4 sm:p-5 rounded-md bg-surface-card/70 border border-border-subtle hover:border-border-medium transition-all duration-200 shadow-sm"
+    <SpotlightCard
+      as="article"
+      data-cursor="project"
+      spotlightColor="cyan"
+      contentClassName="p-4 sm:p-5"
       aria-labelledby={`secondary-project-${project.id}`}
     >
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
@@ -66,6 +70,6 @@ export const SecondaryProjectCard = ({ project }) => {
           )}
         </div>
       </div>
-    </article>
+    </SpotlightCard>
   );
 };

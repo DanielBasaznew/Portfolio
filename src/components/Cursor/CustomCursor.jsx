@@ -1,18 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 /**
- * CustomCursor component
- * High-performance, hardware-accelerated interactive cursor for desktop environments.
+ * CustomCursor Component
+ * Layered, velocity-responsive interactive cursor designed for engineering HUD aesthetics.
  * 
  * Features:
- * - Desktop only: Automatically disabled on mobile/touch/coarse devices
- * - Accessibility: Disabled when prefers-reduced-motion is active
- * - High Performance: Zero React state re-renders on mousemove (pure requestAnimationFrame + translate3d)
- * - Interactive States:
- *   - Default: precision central dot + subtle trailing ring
- *   - Hover (links/buttons): expanded ring with soft focus glow
- *   - Project Card: expanded badge with 'VIEW' telemetry prompt
- *   - External Link: expanded badge with 'VISIT ↗' indicator
+ * - Fluid movement with velocity-based dynamic stretch & rotational inertia
+ * - Contextual modes:
+ *   - Project Cards: expands to 72px with 'EXPLORE' / 'VIEW SYSTEM' label
+ *   - Skills & Tech: expands to 54px with 'TECH' label
+ *   - External Links: expands to 68px with 'VISIT ↗' label
+ *   - Buttons: expands to 46px with magnetic focus & cyan glow
+ *   - Navigation Links: expands to 34px with indigo accent
+ * - Zero React re-renders on mousemove (pure requestAnimationFrame + translate3d on DOM refs)
+ * - Automatically disabled on touch screens and prefers-reduced-motion
  */
 export const CustomCursor = () => {
   const [isEnabled, setIsEnabled] = useState(() => {
@@ -25,16 +26,24 @@ export const CustomCursor = () => {
   const dotRef = useRef(null);
   const ringRef = useRef(null);
   const labelRef = useRef(null);
+  const hudCrossRef = useRef(null);
 
-  // Mutable animation state (no React re-renders)
-  const mousePos = useRef({ x: -100, y: -100 });
+  // Position and physics coordinates (no React state updates)
+  const targetPos = useRef({ x: -100, y: -100 });
+  const prevMousePos = useRef({ x: -100, y: -100 });
+  const dotPos = useRef({ x: -100, y: -100 });
   const ringPos = useRef({ x: -100, y: -100 });
+  
+  // Velocity and dynamics
+  const speed = useRef(0);
+  const angle = useRef(0);
   const isVisible = useRef(false);
-  const currentMode = useRef('default'); // 'default' | 'hover' | 'project' | 'external'
+
+  // Mode management: 'default' | 'button' | 'link' | 'project' | 'external' | 'skill'
+  const currentMode = useRef('default');
   const prevMode = useRef('default');
 
   useEffect(() => {
-    // 1. Listen for device or accessibility preference changes
     const finePointerMedia = window.matchMedia('(pointer: fine) and (hover: hover)');
     const motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -52,13 +61,14 @@ export const CustomCursor = () => {
       };
     }
 
-    // 2. Track mouse position
     const handleMouseMove = (e) => {
-      mousePos.current.x = e.clientX;
-      mousePos.current.y = e.clientY;
+      targetPos.current.x = e.clientX;
+      targetPos.current.y = e.clientY;
 
       if (!isVisible.current) {
         isVisible.current = true;
+        dotPos.current.x = e.clientX;
+        dotPos.current.y = e.clientY;
         ringPos.current.x = e.clientX;
         ringPos.current.y = e.clientY;
         if (dotRef.current) dotRef.current.style.opacity = '1';
@@ -78,28 +88,42 @@ export const CustomCursor = () => {
       if (ringRef.current) ringRef.current.style.opacity = '1';
     };
 
-    // 3. Detect hover targets via delegated mouseover
     const handleMouseOver = (e) => {
       const target = e.target;
       if (!target || !(target instanceof Element)) return;
 
-      const projectEl = target.closest('[data-cursor="project"]');
-      if (projectEl) {
-        currentMode.current = 'project';
-        return;
-      }
-
+      // 1. External link detection (priority over container)
       const externalEl = target.closest('[data-cursor="external"], a[target="_blank"]');
       if (externalEl) {
         currentMode.current = 'external';
         return;
       }
 
-      const interactiveEl = target.closest(
-        'a, button, input, textarea, select, [role="button"], [data-cursor="pointer"]'
-      );
-      if (interactiveEl) {
-        currentMode.current = 'hover';
+      // 2. Button detection (priority over container)
+      const buttonEl = target.closest('button, [data-cursor="button"], .btn-primary, [role="button"]');
+      if (buttonEl) {
+        currentMode.current = 'button';
+        return;
+      }
+
+      // 3. Skill Domain or technology badge detection
+      const skillEl = target.closest('[data-cursor="skill"], .skill-chip');
+      if (skillEl) {
+        currentMode.current = 'skill';
+        return;
+      }
+
+      // 4. Project Card detection
+      const projectEl = target.closest('[data-cursor="project"], #projects article');
+      if (projectEl) {
+        currentMode.current = 'project';
+        return;
+      }
+
+      // 5. Standard navigation & text links, inputs
+      const linkEl = target.closest('a, input, textarea, select');
+      if (linkEl) {
+        currentMode.current = 'link';
         return;
       }
 
@@ -111,66 +135,130 @@ export const CustomCursor = () => {
     document.addEventListener('mouseenter', handleMouseEnter);
     document.addEventListener('mouseover', handleMouseOver, { passive: true });
 
-    // 4. Animation Frame Loop (60-120fps smooth lerp)
     let animationFrameId;
 
     const render = () => {
-      // Direct central dot tracking
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0) translate(-50%, -50%)`;
+      // 1. Calculate velocity & directional angle
+      const vx = targetPos.current.x - prevMousePos.current.x;
+      const vy = targetPos.current.y - prevMousePos.current.y;
+      prevMousePos.current.x = targetPos.current.x;
+      prevMousePos.current.y = targetPos.current.y;
+
+      const rawSpeed = Math.hypot(vx, vy);
+      speed.current += (rawSpeed - speed.current) * 0.15;
+
+      if (rawSpeed > 1) {
+        const rawAngle = Math.atan2(vy, vx) * (180 / Math.PI);
+        angle.current = rawAngle;
       }
 
-      // Smooth outer ring lag / lerp
-      const dx = mousePos.current.x - ringPos.current.x;
-      const dy = mousePos.current.y - ringPos.current.y;
-      ringPos.current.x += dx * 0.18;
-      ringPos.current.y += dy * 0.18;
+      // 2. Responsive central dot interpolation
+      dotPos.current.x += (targetPos.current.x - dotPos.current.x) * 0.45;
+      dotPos.current.y += (targetPos.current.y - dotPos.current.y) * 0.45;
 
+      // 3. Fluid trailing ring interpolation
+      ringPos.current.x += (targetPos.current.x - ringPos.current.x) * 0.16;
+      ringPos.current.y += (targetPos.current.y - ringPos.current.y) * 0.16;
+
+      // 4. Update Dot Transform
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate3d(${dotPos.current.x}px, ${dotPos.current.y}px, 0) translate(-50%, -50%)`;
+      }
+
+      // 5. Update Ring Transform with subtle velocity stretch in default mode
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%)`;
+        const mode = currentMode.current;
+        let transformStr = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%)`;
 
-        // Update styling only when mode changes
+        if (mode === 'default') {
+          // Stretch along velocity vector
+          const stretch = Math.min(speed.current * 0.0035, 0.35);
+          const squeeze = Math.min(speed.current * 0.0018, 0.2);
+          transformStr += ` rotate(${angle.current}deg) scale(${1 + stretch}, ${1 - squeeze})`;
+        } else {
+          // Keep label modes level and non-deformed
+          transformStr += ` scale(1, 1)`;
+        }
+
+        ringRef.current.style.transform = transformStr;
+
+        // 6. Handle mode styling updates
         if (currentMode.current !== prevMode.current) {
           prevMode.current = currentMode.current;
-          const mode = currentMode.current;
 
           if (mode === 'project') {
-            ringRef.current.style.width = '60px';
-            ringRef.current.style.height = '60px';
-            ringRef.current.style.borderColor = 'rgba(99, 102, 241, 0.7)';
-            ringRef.current.style.backgroundColor = 'rgba(99, 102, 241, 0.12)';
+            ringRef.current.style.width = '76px';
+            ringRef.current.style.height = '76px';
+            ringRef.current.style.borderColor = 'rgba(99, 102, 241, 0.85)';
+            ringRef.current.style.backgroundColor = 'rgba(99, 102, 241, 0.16)';
+            ringRef.current.style.boxShadow = '0 0 25px rgba(99, 102, 241, 0.35)';
+            if (dotRef.current) dotRef.current.style.opacity = '0.3';
             if (labelRef.current) {
-              labelRef.current.textContent = 'VIEW';
+              labelRef.current.textContent = 'EXPLORE';
               labelRef.current.style.opacity = '1';
             }
+            if (hudCrossRef.current) hudCrossRef.current.style.opacity = '0.7';
           } else if (mode === 'external') {
-            ringRef.current.style.width = '64px';
-            ringRef.current.style.height = '64px';
-            ringRef.current.style.borderColor = 'rgba(56, 189, 248, 0.7)';
-            ringRef.current.style.backgroundColor = 'rgba(56, 189, 248, 0.12)';
+            ringRef.current.style.width = '72px';
+            ringRef.current.style.height = '72px';
+            ringRef.current.style.borderColor = 'rgba(56, 189, 248, 0.85)';
+            ringRef.current.style.backgroundColor = 'rgba(56, 189, 248, 0.16)';
+            ringRef.current.style.boxShadow = '0 0 25px rgba(56, 189, 248, 0.35)';
+            if (dotRef.current) dotRef.current.style.opacity = '0.3';
             if (labelRef.current) {
               labelRef.current.textContent = 'VISIT ↗';
               labelRef.current.style.opacity = '1';
             }
-          } else if (mode === 'hover') {
+            if (hudCrossRef.current) hudCrossRef.current.style.opacity = '0';
+          } else if (mode === 'skill') {
+            ringRef.current.style.width = '56px';
+            ringRef.current.style.height = '56px';
+            ringRef.current.style.borderColor = 'rgba(16, 185, 129, 0.85)';
+            ringRef.current.style.backgroundColor = 'rgba(16, 185, 129, 0.16)';
+            ringRef.current.style.boxShadow = '0 0 20px rgba(16, 185, 129, 0.35)';
+            if (dotRef.current) dotRef.current.style.opacity = '0.3';
+            if (labelRef.current) {
+              labelRef.current.textContent = 'TECH';
+              labelRef.current.style.opacity = '1';
+            }
+            if (hudCrossRef.current) hudCrossRef.current.style.opacity = '0';
+          } else if (mode === 'button') {
+            ringRef.current.style.width = '48px';
+            ringRef.current.style.height = '48px';
+            ringRef.current.style.borderColor = 'rgba(56, 189, 248, 0.75)';
+            ringRef.current.style.backgroundColor = 'rgba(56, 189, 248, 0.12)';
+            ringRef.current.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.25)';
+            if (dotRef.current) dotRef.current.style.opacity = '1';
+            if (labelRef.current) {
+              labelRef.current.textContent = '';
+              labelRef.current.style.opacity = '0';
+            }
+            if (hudCrossRef.current) hudCrossRef.current.style.opacity = '0';
+          } else if (mode === 'link') {
             ringRef.current.style.width = '38px';
             ringRef.current.style.height = '38px';
-            ringRef.current.style.borderColor = 'rgba(99, 102, 241, 0.5)';
-            ringRef.current.style.backgroundColor = 'rgba(255, 255, 255, 0.04)';
+            ringRef.current.style.borderColor = 'rgba(56, 189, 248, 0.75)';
+            ringRef.current.style.backgroundColor = 'rgba(99, 102, 241, 0.1)';
+            ringRef.current.style.boxShadow = '0 0 18px rgba(56, 189, 248, 0.35)';
+            if (dotRef.current) dotRef.current.style.opacity = '1';
             if (labelRef.current) {
               labelRef.current.textContent = '';
               labelRef.current.style.opacity = '0';
             }
+            if (hudCrossRef.current) hudCrossRef.current.style.opacity = '0';
           } else {
-            // default
-            ringRef.current.style.width = '24px';
-            ringRef.current.style.height = '24px';
-            ringRef.current.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+            // default mode
+            ringRef.current.style.width = '26px';
+            ringRef.current.style.height = '26px';
+            ringRef.current.style.borderColor = 'rgba(255, 255, 255, 0.4)';
             ringRef.current.style.backgroundColor = 'transparent';
+            ringRef.current.style.boxShadow = '0 0 10px rgba(56, 189, 248, 0.15)';
+            if (dotRef.current) dotRef.current.style.opacity = '1';
             if (labelRef.current) {
               labelRef.current.textContent = '';
               labelRef.current.style.opacity = '0';
             }
+            if (hudCrossRef.current) hudCrossRef.current.style.opacity = '0';
           }
         }
       }
@@ -195,30 +283,39 @@ export const CustomCursor = () => {
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-50 overflow-hidden"
+      className="fixed inset-0 pointer-events-none z-[70] overflow-hidden"
       aria-hidden="true"
     >
       {/* Precision Central Dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-brand-cyan pointer-events-none opacity-0 shadow-[0_0_8px_rgba(56,189,248,0.8)]"
-        style={{ willChange: 'transform' }}
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-brand-cyan pointer-events-none opacity-0 shadow-[0_0_10px_rgba(56,189,248,0.9)] transition-opacity duration-150"
+        style={{ willChange: 'transform, opacity' }}
       />
 
-      {/* Smooth Trailing Outer Ring */}
+      {/* Dynamic Trailing Outer Ring */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 rounded-full border border-white/25 pointer-events-none opacity-0 flex items-center justify-center custom-cursor-ring backdrop-blur-[0.5px]"
+        className="fixed top-0 left-0 rounded-full border border-white/35 pointer-events-none opacity-0 flex items-center justify-center custom-cursor-ring backdrop-blur-[1px]"
         style={{
-          width: '24px',
-          height: '24px',
-          willChange: 'transform, width, height',
+          width: '26px',
+          height: '26px',
+          willChange: 'transform, width, height, border-color, background-color',
         }}
       >
+        {/* Subtle HUD Crosshair overlay for Project Cards */}
+        <div
+          ref={hudCrossRef}
+          className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-200 flex items-center justify-center"
+        >
+          <span className="absolute top-1 text-[8px] text-brand-indigo font-mono leading-none">+</span>
+          <span className="absolute bottom-1 text-[8px] text-brand-indigo font-mono leading-none">+</span>
+        </div>
+
         {/* Contextual Telemetry Label */}
         <span
           ref={labelRef}
-          className="font-mono text-[9px] font-bold text-white tracking-widest opacity-0 transition-opacity duration-150 select-none"
+          className="font-mono text-[9px] font-bold text-white tracking-widest opacity-0 transition-opacity duration-150 select-none text-center"
         />
       </div>
     </div>

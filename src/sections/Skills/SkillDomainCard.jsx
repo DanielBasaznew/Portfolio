@@ -8,6 +8,8 @@ import {
   Cog,
 } from 'lucide-react';
 
+import { SpotlightCard } from '../../components/ui/SpotlightCard';
+
 const DOMAIN_ICONS = {
   'agentic-ai': <Brain className="w-4 h-4 text-brand-indigo" />,
   'full-stack': <Code2 className="w-4 h-4 text-brand-cyan" />,
@@ -26,12 +28,15 @@ export const SkillDomainCard = ({ domain, isFocused, onSelect }) => {
   const icon = DOMAIN_ICONS[domain.id] || <Code2 className="w-4 h-4 text-brand-indigo" />;
 
   return (
-    <article
+    <SpotlightCard
+      as="article"
       onClick={onSelect}
-      className={`rounded-md p-4 sm:p-5 transition-all duration-200 flex flex-col justify-between cursor-default border hover:-translate-y-1 ${
+      spotlightColor="indigo"
+      contentClassName="p-4 sm:p-5 flex flex-col justify-between h-full"
+      className={`cursor-default ${
         isFocused
-          ? 'bg-surface-elevated/90 border-brand-indigo shadow-glow-indigo/20'
-          : 'bg-surface-card/90 border-border-medium hover:border-brand-indigo/40 hover:shadow-card hover:bg-surface-card'
+          ? 'bg-surface-elevated border-brand-indigo shadow-glow-indigo/20'
+          : 'border-border-medium'
       }`}
       aria-labelledby={`skill-domain-${domain.id}`}
     >
@@ -82,6 +87,7 @@ export const SkillDomainCard = ({ domain, isFocused, onSelect }) => {
           {domain.skills.map((skill) => (
             <span
               key={skill}
+              data-cursor="skill"
               className="font-mono text-[11px] px-2 py-0.5 rounded-xs bg-surface-elevated/80 border border-border-subtle/80 text-content-primary hover:border-brand-indigo/60 hover:bg-brand-indigo/15 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_0_12px_rgba(99,102,241,0.25)] transition-all duration-150 cursor-default"
             >
               {skill}
@@ -89,6 +95,6 @@ export const SkillDomainCard = ({ domain, isFocused, onSelect }) => {
           ))}
         </div>
       </div>
-    </article>
+    </SpotlightCard>
   );
 };

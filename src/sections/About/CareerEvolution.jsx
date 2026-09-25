@@ -60,10 +60,10 @@ export const CareerEvolution = ({ className = '' }) => {
         {STAGES.map((stage, idx) => (
           <div
             key={stage.step}
-            className={`p-2.5 rounded-sm border transition-all duration-150 flex flex-col justify-between ${
+            className={`p-2.5 rounded-sm border transition-all duration-200 flex flex-col justify-between ${
               stage.highlight
-                ? 'bg-brand-indigo/10 border-brand-indigo/40 shadow-sm'
-                : 'bg-surface-elevated/40 border-border-subtle/70 hover:border-border-medium'
+                ? 'bg-brand-indigo/15 border-brand-indigo/50 shadow-sm hover:border-brand-indigo hover:-translate-y-0.5'
+                : 'bg-surface-elevated/40 border-border-subtle/70 hover:border-brand-indigo/50 hover:bg-surface-elevated/80 hover:-translate-y-0.5 hover:shadow-card'
             }`}
           >
             <div>

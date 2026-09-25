@@ -2,6 +2,7 @@ import React from 'react';
 import { ExternalLink, Lock, Shield } from 'lucide-react';
 import { GithubIcon } from '../../components/icons/GithubIcon';
 import { Button } from '../../components/ui/Button';
+import { SpotlightCard } from '../../components/ui/SpotlightCard';
 
 /**
  * ProjectCard component
@@ -9,10 +10,12 @@ import { Button } from '../../components/ui/Button';
  */
 export const ProjectCard = ({ project }) => {
   return (
-    <article
+    <SpotlightCard
+      as="article"
       data-cursor="project"
-      className="rounded-md bg-surface-card/90 border border-border-medium hover:border-border-strong transition-all duration-200 flex flex-col justify-between overflow-hidden group shadow-card"
+      spotlightColor="indigo"
       aria-labelledby={`project-title-${project.id}`}
+      className="h-full"
     >
       {/* Top Header Bar */}
       <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-5 py-3 bg-surface-elevated/60 border-b border-border-subtle font-mono text-xs">
@@ -155,6 +158,6 @@ export const ProjectCard = ({ project }) => {
           </div>
         )}
       </div>
-    </article>
+    </SpotlightCard>
   );
 };

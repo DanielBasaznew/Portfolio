@@ -73,7 +73,7 @@ export const Contact = () => {
           {/* Contact Methods Grid */}
           <div className="p-4 sm:p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* 1. Direct Email Card */}
-            <div className="p-4 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 flex flex-col justify-between">
+            <div className="p-4 rounded-sm bg-surface-elevated/60 border border-border-subtle/80 hover:border-brand-indigo/60 hover:bg-surface-elevated hover:shadow-card hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-2 text-content-muted font-mono text-xs mb-2 font-medium">
                   <Mail className="w-3.5 h-3.5 text-brand-indigo" />
@@ -115,7 +115,7 @@ export const Contact = () => {
             </div>
 
             {/* 2. Direct Phone Card */}
-            <div className="p-4 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 flex flex-col justify-between">
+            <div className="p-4 rounded-sm bg-surface-elevated/60 border border-border-subtle/80 hover:border-brand-cyan/60 hover:bg-surface-elevated hover:shadow-card hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-2 text-content-muted font-mono text-xs mb-2 font-medium">
                   <Phone className="w-3.5 h-3.5 text-brand-cyan" />
@@ -147,7 +147,7 @@ export const Contact = () => {
             </div>
 
             {/* 3. GitHub Profile */}
-            <div className="p-4 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 flex flex-col justify-between">
+            <div className="p-4 rounded-sm bg-surface-elevated/60 border border-border-subtle/80 hover:border-brand-indigo/60 hover:bg-surface-elevated hover:shadow-card hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-2 text-content-muted font-mono text-xs mb-2 font-medium">
                   <GithubIcon className="w-3.5 h-3.5 text-white" />
@@ -175,7 +175,7 @@ export const Contact = () => {
             </div>
 
             {/* 4. LinkedIn Profile */}
-            <div className="p-4 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 flex flex-col justify-between">
+            <div className="p-4 rounded-sm bg-surface-elevated/60 border border-border-subtle/80 hover:border-brand-cyan/60 hover:bg-surface-elevated hover:shadow-card hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-2 text-content-muted font-mono text-xs mb-2 font-medium">
                   <LinkedinIcon className="w-3.5 h-3.5 text-[#0A66C2]" />

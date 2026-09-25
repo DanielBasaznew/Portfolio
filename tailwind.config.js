@@ -50,9 +50,11 @@ export default {
       },
       boxShadow: {
         card: 'var(--shadow-card)',
+        'card-hover': 'var(--shadow-card-hover)',
         hud: 'var(--shadow-hud)',
         'glow-indigo': 'var(--glow-indigo)',
         'glow-emerald': 'var(--glow-emerald)',
+        'glow-cyan': 'var(--glow-cyan)',
       },
       maxWidth: {
         'content': '1240px',

@@ -33,6 +33,7 @@ export const SkillTicker = () => {
         {displayItems.map((item, idx) => (
           <div
             key={`${item.name}-${idx}`}
+            data-cursor="skill"
             className="flex items-center gap-3 shrink-0 px-3 py-1.5 rounded-sm bg-surface-card/60 border border-border-subtle hover:border-brand-indigo/40 hover:bg-surface-elevated transition-all duration-150 group"
           >
             <span className={`w-1.5 h-1.5 rounded-full ${item.color.replace('text-', 'bg-')} group-hover:animate-ping`} />

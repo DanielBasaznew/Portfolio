@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { GithubIcon } from '../../components/icons/GithubIcon';
 import { Button } from '../../components/ui/Button';
+import { SpotlightCard } from '../../components/ui/SpotlightCard';
 
 /**
  * FeaturedProjectCard component
@@ -19,9 +20,12 @@ import { Button } from '../../components/ui/Button';
  */
 export const FeaturedProjectCard = ({ project }) => {
   return (
-    <article
+    <SpotlightCard
+      as="article"
       data-cursor="project"
-      className="relative rounded-md bg-surface-card/90 border border-brand-indigo/30 backdrop-blur-md shadow-card overflow-hidden group hover:border-brand-indigo/50 transition-all duration-200"
+      spotlightColor="indigo"
+      className="border-brand-indigo/30 hover:border-brand-indigo/60"
+      contentClassName="w-full"
       aria-labelledby="featured-project-title"
     >
       {/* Top Banner Stripe */}
@@ -260,6 +264,6 @@ export const FeaturedProjectCard = ({ project }) => {
           </div>
         </div>
       </div>
-    </article>
+    </SpotlightCard>
   );
 };

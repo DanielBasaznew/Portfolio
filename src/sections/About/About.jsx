@@ -90,7 +90,7 @@ export const About = () => {
                 {PROOF_POINTS.map((pt) => (
                   <div
                     key={pt.title}
-                    className="p-3 rounded-sm bg-surface-card/60 border border-border-subtle/80 hover:border-border-medium transition-colors"
+                    className="p-3 rounded-sm bg-surface-card border border-border-subtle hover:border-brand-emerald/50 hover:bg-surface-elevated hover:shadow-card hover:-translate-y-0.5 transition-all duration-200"
                   >
                     <div className="font-mono text-xl sm:text-2xl font-bold text-brand-emerald tracking-tight mb-0.5">
                       {pt.value}

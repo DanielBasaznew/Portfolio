@@ -88,7 +88,7 @@ export const Hero = () => {
               {CAPABILITIES.map((cap) => (
                 <div
                   key={cap.title}
-                  className="p-3 rounded-sm bg-surface-card/60 border border-border-subtle/80 hover:border-border-medium transition-all group"
+                  className="p-3 rounded-sm bg-surface-card border border-border-subtle hover:border-brand-indigo/50 hover:bg-surface-elevated hover:shadow-card hover:-translate-y-0.5 transition-all duration-200 group"
                 >
                   <div className="flex items-center gap-2 mb-1.5">
                     <span className="p-1 rounded-xs bg-surface-elevated border border-border-subtle group-hover:border-border-medium transition-colors">

@@ -31,7 +31,8 @@ export const SystemCompositionFlow = ({ className = '' }) => {
         {SYSTEM_COMPOSITION_FLOW.map((node, idx) => (
           <div
             key={node.step}
-            className="p-3 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 flex flex-col justify-between relative group hover:border-brand-indigo/40 transition-colors"
+            data-cursor="skill"
+            className="p-3 rounded-sm bg-surface-elevated/60 border border-border-subtle/80 flex flex-col justify-between relative group hover:border-brand-indigo/60 hover:bg-surface-elevated hover:shadow-card hover:-translate-y-0.5 transition-all duration-200"
           >
             <div>
               <div className="flex items-center justify-between mb-1 text-[10px]">

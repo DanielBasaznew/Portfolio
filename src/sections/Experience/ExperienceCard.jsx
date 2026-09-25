@@ -1,5 +1,6 @@
 import React from 'react';
 import { Building2, Calendar, MapPin } from 'lucide-react';
+import { SpotlightCard } from '../../components/ui/SpotlightCard';
 
 /**
  * ExperienceCard component
@@ -7,12 +8,11 @@ import { Building2, Calendar, MapPin } from 'lucide-react';
  */
 export const ExperienceCard = ({ experience }) => {
   return (
-    <article
-      className={`rounded-md p-4 sm:p-6 transition-all duration-200 border ${
-        experience.isCurrent
-          ? 'bg-surface-card/95 border-brand-indigo/40 shadow-card hover:border-brand-indigo/60'
-          : 'bg-surface-card/80 border-border-medium hover:border-border-strong hover:bg-surface-card'
-      }`}
+    <SpotlightCard
+      as="article"
+      spotlightColor={experience.isCurrent ? 'indigo' : 'cyan'}
+      contentClassName="p-4 sm:p-6"
+      className={experience.isCurrent ? 'border-brand-indigo/40' : 'border-border-medium'}
       aria-labelledby={`exp-title-${experience.id}`}
     >
       {/* Top Header Bar */}
@@ -123,13 +123,14 @@ export const ExperienceCard = ({ experience }) => {
           {experience.technologies.map((tech) => (
             <span
               key={tech}
-              className="font-mono text-[11px] px-2 py-0.5 rounded-xs bg-surface-elevated border border-border-subtle text-content-primary"
+              data-cursor="skill"
+              className="font-mono text-[11px] px-2 py-0.5 rounded-xs bg-surface-elevated border border-border-subtle text-content-primary hover:border-brand-cyan/60 transition-colors"
             >
               {tech}
             </span>
           ))}
         </div>
       </div>
-    </article>
+    </SpotlightCard>
   );
 };

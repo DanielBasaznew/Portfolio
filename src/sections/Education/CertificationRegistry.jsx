@@ -30,7 +30,8 @@ export const CertificationRegistry = ({ className = '' }) => {
         {CERTIFICATIONS.map((cert) => (
           <div
             key={cert.id}
-            className="p-3 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 hover:border-brand-indigo/40 transition-colors flex flex-col justify-between"
+            data-cursor="skill"
+            className="p-3 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 hover:border-brand-indigo/60 hover:bg-surface-elevated/90 hover:shadow-card hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between font-mono text-[10px] mb-1.5">
