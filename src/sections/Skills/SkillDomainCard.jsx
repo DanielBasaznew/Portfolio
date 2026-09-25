@@ -28,10 +28,10 @@ export const SkillDomainCard = ({ domain, isFocused, onSelect }) => {
   return (
     <article
       onClick={onSelect}
-      className={`rounded-md p-4 sm:p-5 transition-all duration-200 flex flex-col justify-between cursor-default border ${
+      className={`rounded-md p-4 sm:p-5 transition-all duration-200 flex flex-col justify-between cursor-default border hover:-translate-y-1 ${
         isFocused
-          ? 'bg-surface-elevated/90 border-brand-indigo shadow-glow-indigo/10'
-          : 'bg-surface-card/90 border-border-medium hover:border-border-strong hover:bg-surface-card'
+          ? 'bg-surface-elevated/90 border-brand-indigo shadow-glow-indigo/20'
+          : 'bg-surface-card/90 border-border-medium hover:border-brand-indigo/40 hover:shadow-card hover:bg-surface-card'
       }`}
       aria-labelledby={`skill-domain-${domain.id}`}
     >
@@ -41,7 +41,7 @@ export const SkillDomainCard = ({ domain, isFocused, onSelect }) => {
           <div className="flex items-center gap-2">
             <span className="font-bold text-brand-indigo">{domain.index}</span>
             <span className="text-border-medium">/</span>
-            <span className="text-content-dim uppercase text-[10.5px] tracking-wider">
+            <span className="text-content-muted uppercase text-[10.5px] tracking-wider font-medium">
               {domain.subtitle}
             </span>
           </div>
@@ -82,7 +82,7 @@ export const SkillDomainCard = ({ domain, isFocused, onSelect }) => {
           {domain.skills.map((skill) => (
             <span
               key={skill}
-              className="font-mono text-[11px] px-2 py-0.5 rounded-xs bg-surface-elevated/80 border border-border-subtle/80 text-content-primary hover:border-brand-indigo/40 hover:text-white transition-colors"
+              className="font-mono text-[11px] px-2 py-0.5 rounded-xs bg-surface-elevated/80 border border-border-subtle/80 text-content-primary hover:border-brand-indigo/60 hover:bg-brand-indigo/15 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_0_12px_rgba(99,102,241,0.25)] transition-all duration-150 cursor-default"
             >
               {skill}
             </span>

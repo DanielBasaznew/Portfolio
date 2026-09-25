@@ -4,6 +4,8 @@ import { Container } from '../../components/ui/Container';
 import { SKILL_DOMAINS } from '../../data/skills';
 import { SkillDomainCard } from './SkillDomainCard';
 import { SystemCompositionFlow } from './SystemCompositionFlow';
+import { SkillTicker } from './SkillTicker';
+import { Reveal } from '../../components/motion/Reveal';
 import { Cpu, ArrowDown } from 'lucide-react';
 
 const FILTER_TABS = [
@@ -32,41 +34,50 @@ export const Skills = () => {
     <Section id="skills" hasDivider className="overflow-hidden">
       <Container>
         {/* Section Header */}
-        <div className="space-y-3 mb-10">
-          <div className="inline-flex items-center gap-2 font-mono text-xs text-brand-indigo font-semibold tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-indigo" />
-            <span>04 // TECHNICAL ARSENAL</span>
+        <Reveal direction="up" duration={600}>
+          <div className="space-y-3 mb-8">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-brand-indigo font-semibold tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-indigo" />
+              <span>04 // TECHNICAL ARSENAL</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-sans tracking-tight text-content-primary">
+              The stack behind <br className="hidden sm:inline" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo via-brand-cyan to-brand-emerald">
+                the systems.
+              </span>
+            </h2>
+
+            <p className="text-base sm:text-lg text-content-secondary max-w-3xl leading-relaxed">
+              Technologies organized by the systems they help build — from frontend interfaces and backend services to AI agents, retrieval infrastructure, automation, and deployment.
+            </p>
           </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-sans tracking-tight text-content-primary">
-            The stack behind <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo via-brand-cyan to-brand-emerald">
-              the systems.
-            </span>
-          </h2>
-
-          <p className="text-base sm:text-lg text-content-secondary max-w-3xl leading-relaxed">
-            Technologies organized by the systems they help build — from frontend interfaces and backend services to AI agents, retrieval infrastructure, automation, and deployment.
-          </p>
-        </div>
+        </Reveal>
 
         {/* Filter Navigation Tabs */}
-        <div className="flex flex-wrap items-center gap-1.5 mb-8 pb-4 border-b border-border-subtle font-mono text-xs">
-          {FILTER_TABS.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-3 py-1.5 rounded-xs transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-indigo ${
-                activeTab === tab.id
-                  ? 'bg-brand-indigo text-white font-semibold shadow-sm'
-                  : 'bg-surface-elevated/60 text-content-secondary hover:text-content-primary hover:bg-surface-elevated border border-border-subtle'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        <Reveal direction="up" delay={80} duration={600}>
+          <div className="flex flex-wrap items-center gap-1.5 mb-6 pb-4 border-b border-border-subtle font-mono text-xs">
+            {FILTER_TABS.map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-3 py-1.5 rounded-xs transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-indigo ${
+                  activeTab === tab.id
+                    ? 'bg-brand-indigo text-white font-semibold shadow-sm'
+                    : 'bg-surface-elevated/60 text-content-secondary hover:text-content-primary hover:bg-surface-elevated border border-border-subtle'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* Part 5: Moving Technical Toolkit Ribbon */}
+        <Reveal direction="none" delay={120} duration={500}>
+          <SkillTicker />
+        </Reveal>
 
         {/* Systems Architecture Matrix View */}
         {activeTab === 'all' ? (
@@ -78,18 +89,19 @@ export const Skills = () => {
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-indigo" />
                   TIER 01 // COGNITIVE ENGINE & APPLICATION RUNTIME
                 </span>
-                <span className="text-content-dim hidden sm:inline">
+                <span className="text-content-muted hidden sm:inline font-medium">
                   CORE & PRODUCTION SYSTEMS
                 </span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {coreEngine.map((domain) => (
-                  <SkillDomainCard
-                    key={domain.id}
-                    domain={domain}
-                    isFocused={false}
-                    onSelect={() => setActiveTab(domain.id)}
-                  />
+                {coreEngine.map((domain, index) => (
+                  <Reveal key={domain.id} direction="up" delay={index * 80} duration={550}>
+                    <SkillDomainCard
+                      domain={domain}
+                      isFocused={false}
+                      onSelect={() => setActiveTab(domain.id)}
+                    />
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -113,18 +125,19 @@ export const Skills = () => {
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-emerald" />
                   TIER 02 // AUTOMATION, DEVOPS & PHYSICAL SYSTEMS
                 </span>
-                <span className="text-content-dim hidden sm:inline">
+                <span className="text-content-muted hidden sm:inline font-medium">
                   ORCHESTRATION & EMBEDDED RIGOR
                 </span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {infrastructure.map((domain) => (
-                  <SkillDomainCard
-                    key={domain.id}
-                    domain={domain}
-                    isFocused={false}
-                    onSelect={() => setActiveTab(domain.id)}
-                  />
+                {infrastructure.map((domain, index) => (
+                  <Reveal key={domain.id} direction="up" delay={index * 80} duration={550}>
+                    <SkillDomainCard
+                      domain={domain}
+                      isFocused={false}
+                      onSelect={() => setActiveTab(domain.id)}
+                    />
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -133,19 +146,22 @@ export const Skills = () => {
           /* Focused Single Domain View */
           <div className="mb-12 max-w-2xl mx-auto">
             {filteredDomains.map((domain) => (
-              <SkillDomainCard
-                key={domain.id}
-                domain={domain}
-                isFocused={true}
-                onSelect={() => {}}
-              />
+              <Reveal key={domain.id} direction="scale" duration={450}>
+                <SkillDomainCard
+                  domain={domain}
+                  isFocused={true}
+                  onSelect={() => {}}
+                />
+              </Reveal>
             ))}
           </div>
         )}
 
         {/* System Composition Flow: Interconnected Execution Path */}
         <div className="mt-12">
-          <SystemCompositionFlow />
+          <Reveal direction="up" delay={150} duration={600}>
+            <SystemCompositionFlow />
+          </Reveal>
         </div>
       </Container>
     </Section>

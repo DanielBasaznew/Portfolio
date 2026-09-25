@@ -14,6 +14,8 @@ import {
   ExternalLink,
 } from 'lucide-react';
 
+import { Reveal } from '../../components/motion/Reveal';
+
 export const Contact = () => {
   const [copied, setCopied] = useState(false);
   const email = 'basaznewdaniel@gmail.com';
@@ -28,26 +30,29 @@ export const Contact = () => {
     <Section id="contact" hasDivider className="overflow-hidden">
       <Container>
         {/* Section Header */}
-        <div className="space-y-3 mb-10">
-          <div className="inline-flex items-center gap-2 font-mono text-xs text-brand-indigo font-semibold tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-indigo" />
-            <span>07 // CONNECTION TERMINAL</span>
+        <Reveal direction="up" duration={600}>
+          <div className="space-y-3 mb-10">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-brand-indigo font-semibold tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-indigo" />
+              <span>07 // CONNECTION TERMINAL</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-sans tracking-tight text-content-primary">
+              Let's build something <br className="hidden sm:inline" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo via-brand-cyan to-brand-emerald">
+                intelligent.
+              </span>
+            </h2>
+
+            <p className="text-base sm:text-lg text-content-secondary max-w-3xl leading-relaxed">
+              Open to engineering opportunities, AI systems work, full-stack development, automation projects, and technically ambitious collaborations.
+            </p>
           </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-sans tracking-tight text-content-primary">
-            Let's build something <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo via-brand-cyan to-brand-emerald">
-              intelligent.
-            </span>
-          </h2>
-
-          <p className="text-base sm:text-lg text-content-secondary max-w-3xl leading-relaxed">
-            Open to engineering opportunities, AI systems work, full-stack development, automation projects, and technically ambitious collaborations.
-          </p>
-        </div>
+        </Reveal>
 
         {/* Main Terminal Hub Box */}
-        <div className="rounded-md bg-surface-card/90 border border-brand-indigo/30 backdrop-blur-md shadow-card overflow-hidden mb-8">
+        <Reveal direction="up" delay={90} duration={600} className="mb-8">
+          <div className="rounded-md bg-surface-card/90 border border-brand-indigo/30 backdrop-blur-md shadow-card overflow-hidden">
           {/* Terminal Top Bar */}
           <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-3 bg-surface-elevated/70 border-b border-border-subtle font-mono text-xs">
             <div className="flex items-center gap-2">
@@ -218,6 +223,7 @@ export const Contact = () => {
             </div>
           </div>
         </div>
+      </Reveal>
       </Container>
     </Section>
   );

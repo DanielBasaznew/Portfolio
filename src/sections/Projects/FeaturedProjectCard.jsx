@@ -47,8 +47,8 @@ export const FeaturedProjectCard = ({ project }) => {
 
       {/* Main Grid: 2 Columns on Desktop */}
       <div className="p-4 sm:p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column: Case Study Breakdown & Actions */}
-        <div className="lg:col-span-6 space-y-6">
+        {/* Left Column: Case Study Breakdown & Actions (Sticky on Desktop) */}
+        <div className="lg:col-span-6 space-y-6 lg:sticky lg:top-28 self-start">
           <div>
             <h3
               id="featured-project-title"

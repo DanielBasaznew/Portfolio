@@ -3,6 +3,7 @@ import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/ui/Container';
 import { ConvergenceDiagram } from './ConvergenceDiagram';
 import { CareerEvolution } from './CareerEvolution';
+import { Reveal } from '../../components/motion/Reveal';
 import { Terminal } from 'lucide-react';
 
 const PROOF_POINTS = [
@@ -33,28 +34,30 @@ export const About = () => {
     <Section id="about" hasDivider className="overflow-hidden">
       <Container>
         {/* Section Header */}
-        <div className="space-y-3 mb-12">
-          <div className="inline-flex items-center gap-2 font-mono text-xs text-brand-indigo font-semibold tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-indigo" />
-            <span>02 // SYSTEMS ENGINEERING PROFILE</span>
+        <Reveal direction="up" duration={600}>
+          <div className="space-y-3 mb-12">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-brand-indigo font-semibold tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-indigo" />
+              <span>02 // SYSTEMS ENGINEERING PROFILE</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-sans tracking-tight text-content-primary">
+              Engineering systems, <br className="hidden sm:inline" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo via-brand-cyan to-brand-emerald">
+                not just software.
+              </span>
+            </h2>
+
+            <p className="text-base sm:text-lg text-content-secondary max-w-3xl leading-relaxed">
+              From thermodynamic constraints and mechanical rigor to enterprise automation and full-stack autonomous AI systems — how multidisciplinary engineering disciplines converged into a unified engineering identity.
+            </p>
           </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-sans tracking-tight text-content-primary">
-            Engineering systems, <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo via-brand-cyan to-brand-emerald">
-              not just software.
-            </span>
-          </h2>
-
-          <p className="text-base sm:text-lg text-content-secondary max-w-3xl leading-relaxed">
-            From thermodynamic constraints and mechanical rigor to enterprise automation and full-stack autonomous AI systems — how multidisciplinary engineering disciplines converged into a unified engineering identity.
-          </p>
-        </div>
+        </Reveal>
 
         {/* Two-Column Grid: Left Narrative + Right Convergence Matrix */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start mb-12">
           {/* Left Column: Core Narrative & Philosophy */}
-          <div className="lg:col-span-6 space-y-6">
+          <Reveal direction="up" delay={80} duration={600} className="lg:col-span-6 space-y-6">
             {/* Story Block */}
             <div className="space-y-4 text-sm sm:text-base text-content-secondary font-sans leading-relaxed">
               <p>
@@ -95,25 +98,25 @@ export const About = () => {
                     <div className="font-sans text-xs font-semibold text-content-primary leading-tight mb-1">
                       {pt.title}
                     </div>
-                    <div className="font-mono text-[10px] text-content-dim leading-tight">
+                    <div className="font-mono text-[10px] text-content-muted leading-tight font-medium">
                       {pt.detail}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right Column: Visual Convergence Diagram */}
-          <div className="lg:col-span-6 w-full">
+          <Reveal direction="up" delay={120} duration={600} className="lg:col-span-6 w-full">
             <ConvergenceDiagram />
-          </div>
+          </Reveal>
         </div>
 
         {/* Full-Width Progression Rail: Systems Evolution */}
-        <div className="mt-8">
+        <Reveal direction="up" delay={140} duration={600} className="mt-8">
           <CareerEvolution />
-        </div>
+        </Reveal>
       </Container>
     </Section>
   );

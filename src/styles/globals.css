@@ -114,6 +114,32 @@ body {
   animation: ambientDriftReverse 24s ease-in-out infinite;
 }
 
+/* Technical Skill Marquee */
+@keyframes marqueeSlow {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeSlow 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none !important;
+  }
+}
+
 /* Custom Interactive Cursor Transitions */
 .custom-cursor-ring {
   transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
