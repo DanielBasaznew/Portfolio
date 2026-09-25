@@ -23,7 +23,13 @@ export const NavLinks = ({
     const element = document.getElementById(targetId);
     if (element) {
       e.preventDefault();
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navOffset = 72;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
     if (onItemClick) {
       onItemClick();

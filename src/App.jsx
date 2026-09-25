@@ -3,6 +3,7 @@ import { BackgroundSystem } from './components/background/BackgroundSystem';
 import { Navbar } from './components/navigation/Navbar';
 import { Hero } from './sections/Hero/Hero';
 import { About } from './sections/About/About';
+import { Projects } from './sections/Projects/Projects';
 import { Container } from './components/ui/Container';
 import { GithubIcon } from './components/icons/GithubIcon';
 import { Terminal } from 'lucide-react';
@@ -24,12 +25,14 @@ export const App = () => {
         {/* Step 6: About / Systems Engineering Profile Section */}
         <About />
 
+        {/* Step 7: Featured AI & Full-Stack Projects / Systems Showcase */}
+        <Projects />
+
         {/* 
           Section Anchor Markers:
-          Configured for future implementation steps (Steps 7-10)
+          Configured for future implementation steps (Steps 8-10)
           so navigation anchors function cleanly without premature fake content.
         */}
-        <div id="projects" className="scroll-mt-24" />
         <div id="skills" className="scroll-mt-24" />
         <div id="experience" className="scroll-mt-24" />
         <div id="education" className="scroll-mt-24" />
