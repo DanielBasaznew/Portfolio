@@ -70,7 +70,7 @@ export const Contact = () => {
             {/* 1. Direct Email Card */}
             <div className="p-4 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2 text-content-dim font-mono text-xs mb-2">
+                <div className="flex items-center gap-2 text-content-muted font-mono text-xs mb-2 font-medium">
                   <Mail className="w-3.5 h-3.5 text-brand-indigo" />
                   <span className="uppercase tracking-wider">PRIMARY EMAIL</span>
                 </div>
@@ -95,7 +95,7 @@ export const Contact = () => {
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3 h-3 text-content-dim" />
+                      <Copy className="w-3 h-3 text-content-muted" />
                       <span>Copy Address</span>
                     </>
                   )}
@@ -112,7 +112,7 @@ export const Contact = () => {
             {/* 2. Direct Phone Card */}
             <div className="p-4 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2 text-content-dim font-mono text-xs mb-2">
+                <div className="flex items-center gap-2 text-content-muted font-mono text-xs mb-2 font-medium">
                   <Phone className="w-3.5 h-3.5 text-brand-cyan" />
                   <span className="uppercase tracking-wider">DIRECT PHONE</span>
                 </div>
@@ -136,7 +136,7 @@ export const Contact = () => {
                 </div>
               </div>
 
-              <div className="pt-3 mt-3 border-t border-border-subtle/60 font-mono text-[11px] text-content-dim">
+              <div className="pt-3 mt-3 border-t border-border-subtle/60 font-mono text-[11px] text-content-muted">
                 Voice & WhatsApp
               </div>
             </div>
@@ -144,14 +144,14 @@ export const Contact = () => {
             {/* 3. GitHub Profile */}
             <div className="p-4 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2 text-content-dim font-mono text-xs mb-2">
+                <div className="flex items-center gap-2 text-content-muted font-mono text-xs mb-2 font-medium">
                   <GithubIcon className="w-3.5 h-3.5 text-white" />
                   <span className="uppercase tracking-wider">GITHUB PROFILE</span>
                 </div>
                 <div className="font-mono text-xs text-content-primary font-semibold">
                   DanielBasaznew
                 </div>
-                <div className="font-mono text-[11px] text-content-dim mt-0.5">
+                <div className="font-mono text-[11px] text-content-muted mt-0.5">
                   Public repositories & code
                 </div>
               </div>
@@ -172,14 +172,14 @@ export const Contact = () => {
             {/* 4. LinkedIn Profile */}
             <div className="p-4 rounded-sm bg-surface-elevated/50 border border-border-subtle/80 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2 text-content-dim font-mono text-xs mb-2">
+                <div className="flex items-center gap-2 text-content-muted font-mono text-xs mb-2 font-medium">
                   <LinkedinIcon className="w-3.5 h-3.5 text-[#0A66C2]" />
                   <span className="uppercase tracking-wider">LINKEDIN NETWORK</span>
                 </div>
                 <div className="font-mono text-xs text-content-primary font-semibold">
                   daniel-basaznew
                 </div>
-                <div className="font-mono text-[11px] text-content-dim mt-0.5">
+                <div className="font-mono text-[11px] text-content-muted mt-0.5">
                   Professional connection & posts
                 </div>
               </div>

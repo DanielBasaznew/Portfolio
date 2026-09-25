@@ -84,3 +84,42 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* ==========================================================================
+   AMBIENT BACKGROUND ANIMATIONS & TEXTURE
+   ========================================================================== */
+@keyframes ambientDriftSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+@keyframes ambientDriftReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(6px) rotate(-0.4deg);
+  }
+}
+
+.animate-ambient-slow {
+  animation: ambientDriftSlow 20s ease-in-out infinite;
+}
+
+.animate-ambient-reverse {
+  animation: ambientDriftReverse 24s ease-in-out infinite;
+}
+
+/* Custom Interactive Cursor Transitions */
+.custom-cursor-ring {
+  transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease,
+              background-color 0.2s ease,
+              opacity 0.2s ease;
+}
+

@@ -20,6 +20,7 @@ import { Button } from '../../components/ui/Button';
 export const FeaturedProjectCard = ({ project }) => {
   return (
     <article
+      data-cursor="project"
       className="relative rounded-md bg-surface-card/90 border border-brand-indigo/30 backdrop-blur-md shadow-card overflow-hidden group hover:border-brand-indigo/50 transition-all duration-200"
       aria-labelledby="featured-project-title"
     >
@@ -112,7 +113,7 @@ export const FeaturedProjectCard = ({ project }) => {
                   <div className="font-mono text-xs font-bold text-brand-emerald">
                     {pt.label}
                   </div>
-                  <div className="font-mono text-[10.5px] text-content-dim mt-0.5 leading-snug">
+                  <div className="font-mono text-[10.5px] text-content-muted mt-0.5 leading-snug">
                     {pt.desc}
                   </div>
                 </div>
@@ -152,7 +153,7 @@ export const FeaturedProjectCard = ({ project }) => {
                   SYSTEM_TOPOLOGY // MCP_AGENT_RUNTIME
                 </span>
               </div>
-              <span className="text-[10px] text-content-dim">
+              <span className="text-[10px] text-content-muted font-medium">
                 SPEC: MCP-STDIO-v1
               </span>
             </div>
@@ -167,7 +168,7 @@ export const FeaturedProjectCard = ({ project }) => {
                     <div className="font-semibold text-content-primary text-[11.5px]">
                       AGENT REASONING CORE
                     </div>
-                    <div className="text-[10px] text-content-dim">
+                    <div className="text-[10px] text-content-muted">
                       Gemini API · CrewAI Tool Router
                     </div>
                   </div>
@@ -178,7 +179,7 @@ export const FeaturedProjectCard = ({ project }) => {
               </div>
 
               {/* Connecting Down Arrow */}
-              <div className="flex items-center justify-center -my-1 text-content-dim text-[10px]">
+              <div className="flex items-center justify-center -my-1 text-content-muted text-[10px]">
                 <span>↓ STDIO PROTOCOL RPC</span>
               </div>
 
@@ -211,7 +212,7 @@ export const FeaturedProjectCard = ({ project }) => {
                   <div className="font-semibold text-content-primary text-[11px]">
                     ChromaDB Vector Store
                   </div>
-                  <div className="text-[10px] text-content-dim">
+                  <div className="text-[10px] text-content-muted">
                     SentenceTransformers · PyMuPDF
                   </div>
                 </div>
@@ -225,7 +226,7 @@ export const FeaturedProjectCard = ({ project }) => {
                   <div className="font-semibold text-content-primary text-[11px]">
                     SQLite Engine & Code Runner
                   </div>
-                  <div className="text-[10px] text-content-dim">
+                  <div className="text-[10px] text-content-muted">
                     Deterministic sandbox boundary
                   </div>
                 </div>
@@ -249,7 +250,7 @@ export const FeaturedProjectCard = ({ project }) => {
             </div>
 
             {/* Diagnostic Footer */}
-            <div className="pt-2 flex items-center justify-between text-[10px] text-content-dim border-t border-border-subtle/60">
+            <div className="pt-2 flex items-center justify-between text-[10px] text-content-muted border-t border-border-subtle/60">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3 h-3 text-brand-emerald" />
                 <span>42/42 TEST SUITES PASSING</span>

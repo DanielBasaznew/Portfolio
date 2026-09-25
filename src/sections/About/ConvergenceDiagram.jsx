@@ -92,14 +92,14 @@ export const ConvergenceDiagram = ({ className = '' }) => {
               {pillar.title}
             </div>
 
-            <div className="text-[9.5px] uppercase tracking-wider text-content-dim mb-2">
+            <div className="text-[10px] uppercase tracking-wider text-content-muted font-medium mb-2">
               {pillar.tag}
             </div>
 
             <ul className="space-y-1 text-[10.5px] text-content-secondary">
               {pillar.concepts.map((concept) => (
                 <li key={concept} className="flex items-start gap-1.5 leading-snug">
-                  <span className="text-content-dim text-[10px] leading-tight">•</span>
+                  <span className="text-brand-indigo text-[10px] leading-tight">•</span>
                   <span>{concept}</span>
                 </li>
               ))}

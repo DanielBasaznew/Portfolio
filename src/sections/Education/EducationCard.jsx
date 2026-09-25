@@ -20,7 +20,7 @@ export const EducationCard = ({ edu }) => {
         <div className="flex items-center gap-2">
           <span className="font-bold text-brand-indigo">{edu.index}</span>
           <span className="text-border-medium">/</span>
-          <span className="text-content-dim uppercase text-[10.5px] tracking-wider">
+          <span className="text-content-muted uppercase text-[10.5px] tracking-wider font-medium">
             {edu.program}
           </span>
         </div>
@@ -33,7 +33,7 @@ export const EducationCard = ({ edu }) => {
               <span>{edu.status}</span>
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 text-content-dim uppercase">
+            <span className="inline-flex items-center gap-1 text-content-muted uppercase font-medium">
               <span>{edu.status}</span>
             </span>
           )}
@@ -55,7 +55,7 @@ export const EducationCard = ({ edu }) => {
             <span>{edu.institution}</span>
           </div>
 
-          <div className="flex items-center gap-1 text-content-dim">
+          <div className="flex items-center gap-1 text-content-muted">
             <Calendar className="w-3.5 h-3.5" />
             <span>{edu.period}</span>
           </div>
@@ -78,7 +78,7 @@ export const EducationCard = ({ edu }) => {
               key={m.label}
               className="p-2 rounded-xs bg-canvas-base/60 border border-border-subtle font-mono text-xs"
             >
-              <div className="text-[10px] text-content-dim uppercase">{m.label}</div>
+              <div className="text-[10px] text-content-muted uppercase font-medium">{m.label}</div>
               <div className="font-bold text-brand-emerald">{m.value}</div>
             </div>
           ))}

@@ -10,6 +10,7 @@ import { Button } from '../../components/ui/Button';
 export const ProjectCard = ({ project }) => {
   return (
     <article
+      data-cursor="project"
       className="rounded-md bg-surface-card/90 border border-border-medium hover:border-border-strong transition-all duration-200 flex flex-col justify-between overflow-hidden group shadow-card"
       aria-labelledby={`project-title-${project.id}`}
     >
@@ -38,8 +39,8 @@ export const ProjectCard = ({ project }) => {
             </span>
           )}
           {project.access === 'private' && (
-            <span className="inline-flex items-center gap-1 text-content-dim">
-              <Lock className="w-3 h-3 text-content-dim" />
+            <span className="inline-flex items-center gap-1 text-content-muted font-medium">
+              <Lock className="w-3 h-3 text-content-muted" />
               <span>PRIVATE ASSET</span>
             </span>
           )}
@@ -110,7 +111,7 @@ export const ProjectCard = ({ project }) => {
                 className="p-1.5 rounded-xs bg-canvas-base/60 border border-border-subtle font-mono text-[10px]"
               >
                 <div className="font-semibold text-brand-emerald">{pt.label}</div>
-                <div className="text-content-dim truncate">{pt.desc}</div>
+                <div className="text-content-muted truncate">{pt.desc}</div>
               </div>
             ))}
           </div>
@@ -149,7 +150,7 @@ export const ProjectCard = ({ project }) => {
 
         {project.access === 'private' && (
           <div className="flex items-center gap-1.5 font-mono text-xs text-content-muted">
-            <Shield className="w-3.5 h-3.5 text-content-dim" />
+            <Shield className="w-3.5 h-3.5 text-content-muted" />
             <span>{project.links.statusText}</span>
           </div>
         )}

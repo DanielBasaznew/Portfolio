@@ -1,5 +1,6 @@
 import React from 'react';
 import { BackgroundSystem } from './components/background/BackgroundSystem';
+import { CustomCursor } from './components/Cursor/CustomCursor';
 import { Navbar } from './components/navigation/Navbar';
 import { Hero } from './sections/Hero/Hero';
 import { About } from './sections/About/About';
@@ -15,6 +16,9 @@ export const App = () => {
     <div className="relative min-h-screen bg-canvas-base text-content-primary selection:bg-brand-indigo/30 selection:text-white">
       {/* Precision Background Grid & Glow System */}
       <BackgroundSystem />
+
+      {/* Interactive Desktop Custom Cursor */}
+      <CustomCursor />
 
       {/* Global Navigation HUD */}
       <Navbar />

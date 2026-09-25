@@ -84,10 +84,10 @@ export const TelemetryHUD = ({ className = '' }) => {
               MCP STDIO TRANSPORT
             </div>
             <div className="text-[10px] text-content-secondary flex flex-wrap gap-1">
-              <span className="px-1.5 py-0.2 rounded-xs bg-surface-card border border-border-subtle text-content-dim">
+              <span className="px-1.5 py-0.5 rounded-xs bg-surface-card border border-border-subtle text-content-muted">
                 tools: 8 active
               </span>
-              <span className="px-1.5 py-0.2 rounded-xs bg-surface-card border border-border-subtle text-content-dim">
+              <span className="px-1.5 py-0.5 rounded-xs bg-surface-card border border-border-subtle text-content-muted">
                 resources: stdio
               </span>
             </div>
@@ -157,7 +157,7 @@ export const TelemetryHUD = ({ className = '' }) => {
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-indigo" />
                 SIMULATED EVENT LOG
               </span>
-              <span className="text-[9px] text-content-dim">
+              <span className="text-[10px] text-content-muted font-normal">
                 (illustrative telemetry demo)
               </span>
             </div>
@@ -196,7 +196,7 @@ export const TelemetryHUD = ({ className = '' }) => {
                   }`}
                 >
                   <div className="flex items-center gap-2 truncate">
-                    <span className="text-content-dim shrink-0">[{trace.time}]</span>
+                    <span className="text-content-muted shrink-0 font-medium">[{trace.time}]</span>
                     <span className={`font-semibold shrink-0 ${trace.color}`}>
                       {trace.type}
                     </span>
@@ -218,7 +218,7 @@ export const TelemetryHUD = ({ className = '' }) => {
         </div>
 
         {/* Footer Diagnostic Bar */}
-        <div className="pt-2 flex items-center justify-between text-[10px] text-content-dim border-t border-border-subtle/50">
+        <div className="pt-2 flex items-center justify-between text-[10px] text-content-muted border-t border-border-subtle/50">
           <div className="flex items-center gap-3">
             <span>ARCH: AGENTIC-RAG</span>
             <span className="hidden sm:inline">STACK: FASTAPI · REACT</span>

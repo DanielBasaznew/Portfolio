@@ -105,7 +105,7 @@ export const ExperienceCard = ({ experience }) => {
                 className="p-2 rounded-xs bg-canvas-base/60 border border-border-subtle font-mono text-[10.5px]"
               >
                 <div className="font-bold text-brand-emerald">{item.label}</div>
-                <div className="text-content-dim text-[9.5px] leading-tight mt-0.5 truncate">
+                <div className="text-content-muted text-[10.5px] leading-tight mt-0.5">
                   {item.desc}
                 </div>
               </div>

@@ -49,7 +49,7 @@ export const Footer = () => {
               <span className="font-bold text-white text-sm tracking-wider">
                 DANIEL<span className="text-brand-indigo">.</span>B
               </span>
-              <span className="text-[10px] text-content-dim px-1.5 py-0.2 rounded-xs bg-surface-card border border-border-subtle">
+              <span className="text-[10px] text-content-muted px-1.5 py-0.5 rounded-xs bg-surface-card border border-border-subtle font-medium">
                 AI.SYS
               </span>
             </div>
@@ -77,9 +77,9 @@ export const Footer = () => {
         </div>
 
         {/* Middle Tier: Metadata & External Profiles */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-content-dim text-[11px]">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-content-muted text-[11px]">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="flex items-center gap-1.5 text-content-secondary">
+            <span className="flex items-center gap-1.5 text-content-secondary font-medium">
               <Terminal className="w-3 h-3 text-brand-emerald" />
               <span>STACK: REACT 19 · JAVASCRIPT · TAILWIND · MCP</span>
             </span>
@@ -124,7 +124,7 @@ export const Footer = () => {
               type="button"
               onClick={scrollToTop}
               aria-label="Scroll back to top of page"
-              className="p-1 rounded-xs bg-surface-elevated text-content-dim hover:text-content-primary border border-border-subtle transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-indigo ml-2"
+              className="p-1 rounded-xs bg-surface-elevated text-content-muted hover:text-content-primary border border-border-subtle hover:border-border-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-indigo ml-2"
               title="Return to top"
             >
               <ArrowUp className="w-3.5 h-3.5" />
@@ -133,11 +133,11 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Tier: Copyright */}
-        <div className="pt-4 border-t border-border-subtle/50 text-[10.5px] text-content-dim flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="pt-4 border-t border-border-subtle/50 text-[10.5px] text-content-muted flex flex-col sm:flex-row items-center justify-between gap-2">
           <div>
             © 2026 Daniel Basaznew. All rights reserved.
           </div>
-          <div className="text-content-dim">
+          <div className="text-content-muted font-medium">
             ENGINEERING SYSTEMS, NOT JUST SOFTWARE.
           </div>
         </div>

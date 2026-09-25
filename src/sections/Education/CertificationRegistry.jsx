@@ -35,7 +35,7 @@ export const CertificationRegistry = ({ className = '' }) => {
             <div>
               <div className="flex items-center justify-between font-mono text-[10px] mb-1.5">
                 <span className="font-bold text-brand-indigo">{cert.index}</span>
-                <span className="px-1.5 py-0.5 rounded-xs bg-surface-card border border-border-subtle text-content-dim uppercase text-[9px] font-semibold">
+                <span className="px-1.5 py-0.5 rounded-xs bg-surface-card border border-border-subtle text-content-muted uppercase text-[10px] font-semibold">
                   {cert.category}
                 </span>
               </div>
@@ -47,7 +47,7 @@ export const CertificationRegistry = ({ className = '' }) => {
               <div className="font-mono text-[11px] text-content-secondary mb-2">
                 {cert.issuer}
                 <span className="text-border-medium mx-1">·</span>
-                <span className="text-content-dim">{cert.platform}</span>
+                <span className="text-content-muted">{cert.platform}</span>
               </div>
             </div>
 
@@ -57,7 +57,7 @@ export const CertificationRegistry = ({ className = '' }) => {
                   ID: {cert.credentialId}
                 </span>
               ) : (
-                <span className="text-content-dim">CREDENTIAL VERIFIED</span>
+                <span className="text-content-muted">CREDENTIAL VERIFIED</span>
               )}
               <span className="inline-flex items-center gap-1 text-brand-emerald font-semibold shrink-0">
                 <CheckCircle2 className="w-3 h-3" />

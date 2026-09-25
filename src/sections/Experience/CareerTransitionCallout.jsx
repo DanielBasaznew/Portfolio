@@ -73,7 +73,7 @@ export const CareerTransitionCallout = ({ className = '' }) => {
             <div>
               <div className="flex items-center justify-between mb-1.5 text-[10px]">
                 <span className={`font-bold ${stage.tagColor}`}>{stage.step}</span>
-                <span className="text-content-dim uppercase text-[9px] tracking-wider">
+                <span className="text-content-muted uppercase text-[10px] tracking-wider font-medium">
                   LAYER
                 </span>
               </div>
@@ -82,7 +82,7 @@ export const CareerTransitionCallout = ({ className = '' }) => {
                 {stage.layer}
               </div>
 
-              <div className="font-mono text-[10.5px] text-content-dim mb-2 font-medium">
+              <div className="font-mono text-[11px] text-content-muted mb-2 font-medium">
                 {stage.domain}
               </div>
             </div>
