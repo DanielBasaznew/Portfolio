@@ -5,6 +5,7 @@ import { Hero } from './sections/Hero/Hero';
 import { About } from './sections/About/About';
 import { Projects } from './sections/Projects/Projects';
 import { Skills } from './sections/Skills/Skills';
+import { Experience } from './sections/Experience/Experience';
 import { Container } from './components/ui/Container';
 import { GithubIcon } from './components/icons/GithubIcon';
 import { Terminal } from 'lucide-react';
@@ -32,12 +33,14 @@ export const App = () => {
         {/* Step 8: Technical Skills & Systems Architecture Matrix */}
         <Skills />
 
+        {/* Step 9: Work Experience & Operational Timeline */}
+        <Experience />
+
         {/* 
           Section Anchor Markers:
-          Configured for future implementation steps (Steps 9-10)
+          Configured for future implementation steps (Step 10)
           so navigation anchors function cleanly without premature fake content.
         */}
-        <div id="experience" className="scroll-mt-24" />
         <div id="education" className="scroll-mt-24" />
         <div id="contact" className="scroll-mt-24" />
       </main>

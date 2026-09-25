@@ -1,0 +1,188 @@
+/**
+ * Verified Work Experience Data Layer
+ * Source of truth: Portfolio Intelligence Report.
+ * Zero manufactured KPIs, client names, or inflated titles.
+ */
+
+export const EXPERIENCES = [
+  {
+    id: 'pkf-ethiopia',
+    index: '01',
+    organization: 'PKF Ethiopia',
+    role: 'Workflow Automation Engineer & Field Audit Operations Lead',
+    period: 'Dec 2021 – Present',
+    startYear: '2021',
+    location: 'Remote / Addis Ababa',
+    category: 'AUTOMATION & OPERATIONS',
+    isCurrent: true,
+    statusLabel: 'CURRENT / AUTOMATION ENGINEERING',
+    summary:
+      'Led field audit operational workflows and developed programmatic automation pipelines to reconcile retail photos, location telemetry, and multi-channel reports across nationwide retail networks.',
+    responsibilities: [
+      'Built automated headless ingestion pipelines using Telethon, Playwright, and Selenium to capture distributed field audit submissions.',
+      'Implemented high-speed fuzzy store matching using RapidFuzz and Gemini API for visual shelf-compliance reconciliation.',
+      'Engineered automated spreadsheet dispatch generators with OpenPyXL and Pandas, consolidating data across 25+ regional distribution channels.',
+      'Developed internal FastAPI microservices and Next.js interfaces backed by SQLite and PostgreSQL to accelerate operational dispatch.',
+    ],
+    technologies: [
+      'Python',
+      'Pandas',
+      'Playwright',
+      'Selenium',
+      'OpenPyXL',
+      'RapidFuzz',
+      'Gemini',
+      'FastAPI',
+      'Next.js',
+      'SQLite',
+      'PostgreSQL',
+    ],
+    verifiedImpact: [
+      { label: '80%+ TIME SAVINGS', desc: 'Manual data-entry & reporting reduction' },
+      { label: '25+ CHANNELS', desc: 'Automated regional distribution feeds' },
+      { label: 'MULTI-STAGE MATCHING', desc: 'RapidFuzz + Gemini verification' },
+    ],
+  },
+  {
+    id: 'ibt-qiyas',
+    index: '02',
+    organization: 'IBT-Qiyas Full Stack Academy',
+    role: 'Core Member & Full-Stack Developer',
+    period: 'Jul 2026 – Present',
+    startYear: '2026',
+    location: 'Remote / Canada & Addis Ababa',
+    category: 'SOFTWARE ENGINEERING',
+    isCurrent: true,
+    statusLabel: 'CURRENT / FULL-STACK & QA',
+    summary:
+      'Engaged in intensive full-stack application development, API microservice architecture, and software quality assurance engineering.',
+    responsibilities: [
+      'Architected responsive full-stack applications with React, Next.js, and modern REST APIs.',
+      'Designed database schemas, relational queries, and automated testing suites.',
+      'Implemented rigorous QA methodologies and automated CI/CD deployment pipelines.',
+      'Collaborated on the Addis Eats platform project with complex frontend state management.',
+    ],
+    technologies: [
+      'React',
+      'Next.js',
+      'JavaScript',
+      'REST APIs',
+      'Databases',
+      'QA Testing',
+      'CI/CD',
+    ],
+    verifiedImpact: [
+      { label: 'FULL-STACK DELIVERY', desc: 'Production-ready web application flows' },
+      { label: 'AUTOMATED QA', desc: 'Regression and unit testing protocols' },
+      { label: 'ADDIS EATS', desc: 'Full-stack food discovery platform' },
+    ],
+  },
+  {
+    id: 'heineken-ethiopia',
+    index: '03',
+    organization: 'Heineken Ethiopia',
+    role: 'Industrial Practitioner & Packaging Operator',
+    period: 'Jun 2023 – Jun 2026',
+    startYear: '2023',
+    location: 'Addis Ababa, Ethiopia',
+    category: 'INDUSTRIAL & AUTOMATION SYSTEMS',
+    isCurrent: false,
+    statusLabel: 'COMPLETED',
+    summary:
+      'Operated high-speed industrial packaging machinery, monitored sensor telemetry, and performed mechanical/PLC troubleshooting on automated bottling lines.',
+    responsibilities: [
+      'Operated automated bottling lines and high-speed industrial packaging machinery under stringent quality controls.',
+      'Monitored optical sensor telemetry and PLC-driven automation control loops during live production runs.',
+      'Conducted mechanical diagnostics, preventive maintenance, and physical systems troubleshooting to minimize line downtime.',
+    ],
+    technologies: [
+      'Packaging Machinery',
+      'Sensors',
+      'PLC Automation',
+      'Mechanical Diagnostics',
+      'Industrial Systems',
+    ],
+    verifiedImpact: [
+      { label: 'INDUSTRIAL RIGOR', desc: 'High-speed automated manufacturing operations' },
+      { label: 'PLC & SENSORS', desc: 'Real-time telemetry and automation loops' },
+      { label: 'PREVENTIVE MAINTENANCE', desc: 'Root-cause mechanical troubleshooting' },
+    ],
+  },
+  {
+    id: 'twinkle-technology',
+    index: '04',
+    organization: 'Twinkle Technology Group PLC',
+    role: 'Office Engineer',
+    period: 'Sep 2025 – Jan 2026',
+    startYear: '2025',
+    location: 'Addis Ababa, Ethiopia',
+    category: 'RENEWABLE ENERGY ENGINEERING',
+    isCurrent: false,
+    statusLabel: 'COMPLETED',
+    summary:
+      'Supported renewable energy engineering projects, solar installation technical documentation, procurement evaluation, and compliance workflows.',
+    responsibilities: [
+      'Provided engineering calculations and technical documentation support for commercial solar installations.',
+      'Developed Bills of Quantities (BoQ) and created automated calculation spreadsheets for system sizing.',
+      'Assisted in technical tender evaluations, procurement reviews, and equipment compliance verification.',
+    ],
+    technologies: [
+      'BoQ Automation',
+      'Solar Sizing',
+      'Engineering Reporting',
+      'Tender Evaluation',
+      'Compliance Documentation',
+    ],
+    verifiedImpact: [
+      { label: 'BOQ AUTOMATION', desc: 'Automated sizing & cost calculation workflows' },
+      { label: 'TECHNICAL TENDERS', desc: 'Rigorous engineering procurement audits' },
+    ],
+  },
+  {
+    id: 'codsoft',
+    index: '05',
+    organization: 'CodSoft',
+    role: 'Machine Learning Intern',
+    period: 'Sep 2024 – Oct 2024',
+    startYear: '2024',
+    location: 'Remote',
+    category: 'APPLIED MACHINE LEARNING',
+    isCurrent: false,
+    statusLabel: 'COMPLETED',
+    summary:
+      'Engineered supervised machine learning pipelines for fraud detection, customer churn forecasting, and multi-class text categorization.',
+    responsibilities: [
+      'Trained classification models on imbalanced datasets using scikit-learn for credit card fraud detection.',
+      'Built feature engineering and preprocessing pipelines for customer churn prediction models.',
+      'Implemented text representation and classification algorithms for movie genre categorization.',
+    ],
+    technologies: ['Python', 'scikit-learn', 'Pandas', 'NumPy', 'Machine Learning'],
+    verifiedImpact: [
+      { label: 'FRAUD DETECTION', desc: 'Classification pipeline for imbalanced data' },
+      { label: 'CHURN PREDICTION', desc: 'Customer retention predictive modeling' },
+    ],
+  },
+  {
+    id: 'metec',
+    index: '06',
+    organization: 'FDRE Military Maintenance Office / MetEC',
+    role: 'Technical Intern',
+    period: 'Jun 2024 – Aug 2024',
+    startYear: '2024',
+    location: 'Ethiopia',
+    category: 'MECHANICAL MAINTENANCE',
+    isCurrent: false,
+    statusLabel: 'COMPLETED',
+    summary:
+      'Conducted mechanical diagnostics, preventive fleet maintenance, and physical systems inspection on heavy vehicles.',
+    responsibilities: [
+      'Performed diagnostic inspections, mechanical disassembly, and component servicing on vehicle fleet systems.',
+      'Applied physical engineering tolerances, lubrication analysis, and mechanical safety standards.',
+    ],
+    technologies: ['Mechanical Diagnostics', 'Vehicle Inspection', 'Maintenance Protocols'],
+    verifiedImpact: [
+      { label: 'FLEET DIAGNOSTICS', desc: 'Hands-on mechanical systems inspection' },
+      { label: 'SYSTEM TOLERANCES', desc: 'Physical component verification' },
+    ],
+  },
+];
