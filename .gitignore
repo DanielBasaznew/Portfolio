@@ -1,21 +1,45 @@
-# OS & Editor Files
-.DS_Store
-Thumbs.db
-*.swp
-*.swo
-.vscode/
-.idea/
-
-# Office Temporary Files
-~$*
-
-# Environment & Logs
-.env
-.env.local
-*.log
-
-# Node & Build artifacts (for subsequent steps)
+# Dependencies
 node_modules/
+
+# Build output
 dist/
 build/
 .next/
+
+# Environment variables & local secrets
+.env
+.env.*
+!.env.example
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE & Editor files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Temporary & Office cache files
+*.tmp
+*.temp
+~$*
+
+# Coverage & testing
+coverage/
+
+# Local cache & tooling
+.cache/
+.parcel-cache/
+.vite/
+
