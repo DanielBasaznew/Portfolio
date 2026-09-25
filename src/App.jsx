@@ -2,6 +2,7 @@ import React from 'react';
 import { BackgroundSystem } from './components/background/BackgroundSystem';
 import { Navbar } from './components/navigation/Navbar';
 import { Hero } from './sections/Hero/Hero';
+import { About } from './sections/About/About';
 import { Container } from './components/ui/Container';
 import { GithubIcon } from './components/icons/GithubIcon';
 import { Terminal } from 'lucide-react';
@@ -20,12 +21,14 @@ export const App = () => {
         {/* Step 5: Hero Section with Telemetry HUD */}
         <Hero />
 
+        {/* Step 6: About / Systems Engineering Profile Section */}
+        <About />
+
         {/* 
           Section Anchor Markers:
-          Configured for future implementation steps (Steps 6-10)
+          Configured for future implementation steps (Steps 7-10)
           so navigation anchors function cleanly without premature fake content.
         */}
-        <div id="about" className="scroll-mt-24" />
         <div id="projects" className="scroll-mt-24" />
         <div id="skills" className="scroll-mt-24" />
         <div id="experience" className="scroll-mt-24" />
