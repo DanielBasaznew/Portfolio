@@ -1,6 +1,10 @@
 import React from 'react';
 
 export const Button = ({
+  as: Component = 'button',
+  href,
+  target,
+  rel,
   variant = 'primary',
   size = 'md',
   icon,
@@ -10,8 +14,10 @@ export const Button = ({
   disabled = false,
   ...props
 }) => {
+  const Comp = href ? 'a' : Component;
+
   const baseStyles =
-    'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-indigo focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-base disabled:opacity-50 disabled:cursor-not-allowed select-none';
+    'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-indigo focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-base disabled:opacity-50 disabled:cursor-not-allowed select-none no-underline cursor-pointer';
 
   const sizeStyles = {
     sm: 'text-xs px-3 py-1.5 rounded-sm gap-1.5 tracking-wide',
@@ -31,14 +37,18 @@ export const Button = ({
   };
 
   return (
-    <button
+    <Comp
+      href={href}
+      target={target}
+      rel={target === '_blank' ? (rel || 'noopener noreferrer') : rel}
       className={`${baseStyles} ${sizeStyles[size] || sizeStyles.md} ${variantStyles[variant] || variantStyles.primary} ${className}`}
-      disabled={disabled}
+      disabled={href ? undefined : disabled}
+      aria-disabled={disabled ? 'true' : undefined}
       {...props}
     >
       {icon && iconPosition === 'left' && <span className="inline-flex shrink-0">{icon}</span>}
       <span>{children}</span>
       {icon && iconPosition === 'right' && <span className="inline-flex shrink-0">{icon}</span>}
-    </button>
+    </Comp>
   );
 };
