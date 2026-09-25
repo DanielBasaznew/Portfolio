@@ -1,0 +1,49 @@
+/* ==========================================================================
+   PORTFOLIO DESIGN TOKENS (Daniel Basaznew — Full Stack AI Engineer)
+   ========================================================================== */
+
+:root {
+  /* Canvas & Surface Tokens */
+  --bg-base: #07090e;
+  --bg-subtle: #0b0f19;
+  --surface-card: #0f1420;
+  --surface-card-hover: #141c2e;
+  --surface-elevated: #161f32;
+  --surface-input: #0a0d14;
+
+  /* Border & Divider Tokens */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.20);
+  --border-indigo: rgba(99, 102, 241, 0.35);
+  --border-emerald: rgba(16, 185, 129, 0.35);
+
+  /* Brand Accents & Telemetry */
+  --accent-indigo: #6366f1;
+  --accent-indigo-hover: #4f46e5;
+  --accent-indigo-glow: rgba(99, 102, 241, 0.15);
+
+  --accent-emerald: #10b981;
+  --accent-emerald-hover: #059669;
+  --accent-emerald-glow: rgba(16, 185, 129, 0.15);
+
+  --accent-cyan: #38bdf8;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+
+  /* Text Contrast Hierarchy */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-dim: #334155;
+
+  /* Shadow & Glow Tokens */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-subtle);
+  --shadow-hud: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-medium);
+  --glow-indigo: 0 0 30px rgba(99, 102, 241, 0.15);
+  --glow-emerald: 0 0 30px rgba(16, 185, 129, 0.15);
+
+  /* Spacing & Layout Tokens */
+  --max-content-width: 1240px;
+}
