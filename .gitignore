@@ -1,0 +1,21 @@
+# OS & Editor Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Office Temporary Files
+~$*
+
+# Environment & Logs
+.env
+.env.local
+*.log
+
+# Node & Build artifacts (for subsequent steps)
+node_modules/
+dist/
+build/
+.next/
