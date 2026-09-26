@@ -1,5 +1,6 @@
 import React from 'react';
 import { Cog, Briefcase, Code2, Brain, GitMerge, ArrowDown } from 'lucide-react';
+import { SpotlightCard } from '../../components/ui/SpotlightCard';
 
 const PILLARS = [
   {
@@ -10,7 +11,7 @@ const PILLARS = [
     icon: <Cog className="w-4 h-4 text-brand-indigo" />,
     borderColor: 'border-brand-indigo/30 hover:border-brand-indigo/60',
     accentColor: 'text-brand-indigo',
-    bgGlow: 'group-hover:bg-brand-indigo/5',
+    spotlightColor: 'indigo',
     concepts: ['Systems thinking', 'Physical systems modeling', 'Engineering discipline', 'CAD & IoT foundations'],
   },
   {
@@ -21,7 +22,7 @@ const PILLARS = [
     icon: <Briefcase className="w-4 h-4 text-brand-cyan" />,
     borderColor: 'border-brand-cyan/30 hover:border-brand-cyan/60',
     accentColor: 'text-brand-cyan',
-    bgGlow: 'group-hover:bg-brand-cyan/5',
+    spotlightColor: 'cyan',
     concepts: ['Process automation', 'Workflow optimization', 'Stakeholder communication', 'Business ROI focus'],
   },
   {
@@ -32,7 +33,7 @@ const PILLARS = [
     icon: <Code2 className="w-4 h-4 text-brand-emerald" />,
     borderColor: 'border-brand-emerald/30 hover:border-brand-emerald/60',
     accentColor: 'text-brand-emerald',
-    bgGlow: 'group-hover:bg-brand-emerald/5',
+    spotlightColor: 'emerald',
     concepts: ['React & Next.js full stack', 'High-throughput APIs', 'Databases (SQL/NoSQL)', 'Automated CI/CD & QA'],
   },
   {
@@ -43,7 +44,7 @@ const PILLARS = [
     icon: <Brain className="w-4 h-4 text-brand-amber" />,
     borderColor: 'border-brand-amber/30 hover:border-brand-amber/60',
     accentColor: 'text-brand-amber',
-    bgGlow: 'group-hover:bg-brand-amber/5',
+    spotlightColor: 'amber',
     concepts: ['Agentic AI & tool calling', 'Model Context Protocol (MCP)', 'RAG & Vector stores (ChromaDB)', 'Langfuse observability'],
   },
 ];
@@ -72,12 +73,14 @@ export const ConvergenceDiagram = ({ className = '' }) => {
         </span>
       </div>
 
-      {/* Grid of the 4 Pillars */}
+      {/* Grid of the 4 Pillars (Cursor-reactive SpotlightCards) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
         {PILLARS.map((pillar) => (
-          <div
+          <SpotlightCard
             key={pillar.id}
-            className={`group p-3 rounded-sm bg-surface-elevated/50 border ${pillar.borderColor} ${pillar.bgGlow} transition-all duration-200`}
+            spotlightColor={pillar.spotlightColor}
+            contentClassName="p-3"
+            className="rounded-sm bg-surface-elevated/50 border-border-subtle/80"
           >
             <div className="flex items-center justify-between mb-1.5">
               <span className={`text-[10px] font-bold ${pillar.accentColor}`}>
@@ -104,7 +107,7 @@ export const ConvergenceDiagram = ({ className = '' }) => {
                 </li>
               ))}
             </ul>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
 
@@ -126,8 +129,12 @@ export const ConvergenceDiagram = ({ className = '' }) => {
         </div>
       </div>
 
-      {/* Final Emphasized Destination Node */}
-      <div className="mt-3 p-4 rounded-sm bg-gradient-to-b from-surface-elevated to-canvas-base border border-brand-indigo/40 shadow-glow-indigo/10 relative overflow-hidden group">
+      {/* Final Emphasized Destination Node (Cursor-reactive SpotlightCard) */}
+      <SpotlightCard
+        spotlightColor="indigo"
+        contentClassName="p-4"
+        className="mt-3 rounded-sm bg-gradient-to-b from-surface-elevated to-canvas-base border-brand-indigo/40 shadow-glow-indigo/10 relative overflow-hidden"
+      >
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-brand-indigo via-brand-cyan to-brand-emerald" />
         
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
@@ -149,7 +156,8 @@ export const ConvergenceDiagram = ({ className = '' }) => {
         <p className="font-sans text-xs text-content-secondary mt-2 leading-relaxed">
           Bridging mechanical systems discipline, enterprise operational workflows, and modern cloud/web architectures to deliver autonomous, observable AI systems.
         </p>
-      </div>
+      </SpotlightCard>
     </div>
   );
 };
+

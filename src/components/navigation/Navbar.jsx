@@ -5,9 +5,12 @@ import { NavLinks } from './NavLinks';
 import { AvailabilityIndicator } from './AvailabilityIndicator';
 import { Container } from '../ui/Container';
 
+const NAV_SECTION_IDS = ['about', 'projects', 'skills', 'experience', 'education', 'contact'];
+
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   // Monitor scroll position to apply elevated HUD styling
   useEffect(() => {
@@ -17,6 +20,80 @@ export const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll-aware active section detection via IntersectionObserver
+  useEffect(() => {
+    const observerOptions = {
+      // 75px top margin accounts for fixed navbar height
+      // 35% bottom margin creates an active detection zone in the upper-mid viewport
+      rootMargin: '-75px 0px -35% 0px',
+      threshold: [0, 0.1, 0.25, 0.5, 0.75],
+    };
+
+    const sectionEntries = new Map();
+
+    const evaluateActive = () => {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      // 1. Bottom of document check: guarantee 'contact' activates
+      if (windowHeight + scrollY >= docHeight - 80) {
+        setActiveSection('contact');
+        return;
+      }
+
+      // 2. Hero area at top: no nav section is active
+      if (scrollY < 240) {
+        setActiveSection('');
+        return;
+      }
+
+      // 3. Collect currently intersecting sections
+      const visible = [];
+      sectionEntries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          visible.push(entry);
+        }
+      });
+
+      if (visible.length === 1) {
+        setActiveSection(visible[0].target.id);
+      } else if (visible.length > 1) {
+        // Pick section whose top boundary is closest to navbar baseline (~80px)
+        visible.sort((a, b) => {
+          const distA = Math.abs(a.boundingClientRect.top - 80);
+          const distB = Math.abs(b.boundingClientRect.top - 80);
+          return distA - distB;
+        });
+        setActiveSection(visible[0].target.id);
+      }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        sectionEntries.set(entry.target.id, entry);
+      });
+      evaluateActive();
+    }, observerOptions);
+
+    NAV_SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    const handleScroll = () => {
+      evaluateActive();
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    evaluateActive();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Close mobile menu on Escape key press
@@ -76,7 +153,7 @@ export const Navbar = () => {
           aria-label="Primary Navigation"
           className="hidden md:flex items-center"
         >
-          <NavLinks />
+          <NavLinks activeSection={activeSection} />
         </nav>
 
         {/* Right: Availability Status & GitHub */}
@@ -126,7 +203,11 @@ export const Navbar = () => {
               <span className="font-mono text-xs uppercase tracking-widest text-content-muted block mb-3">
                 Navigation
               </span>
-              <NavLinks vertical onItemClick={() => setMobileMenuOpen(false)} />
+              <NavLinks
+                vertical
+                activeSection={activeSection}
+                onItemClick={() => setMobileMenuOpen(false)}
+              />
             </div>
 
             <div className="py-2">
@@ -160,3 +241,4 @@ export const Navbar = () => {
     </header>
   );
 };
+

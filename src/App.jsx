@@ -1,5 +1,6 @@
 import React from 'react';
 import { BackgroundSystem } from './components/background/BackgroundSystem';
+import { AtmosphericGradients } from './components/background/AtmosphericGradients';
 import { CustomCursor } from './components/Cursor/CustomCursor';
 import { ScrollProgress } from './components/navigation/ScrollProgress';
 import { Navbar } from './components/navigation/Navbar';
@@ -17,6 +18,9 @@ export const App = () => {
     <div className="relative min-h-screen bg-canvas-base text-content-primary selection:bg-brand-indigo/30 selection:text-white">
       {/* Precision Background Grid & Glow System */}
       <BackgroundSystem />
+
+      {/* Page-Wide Subtle Atmospheric Depth & Vignette Gradients */}
+      <AtmosphericGradients />
 
       {/* Ambient Top Scroll Progress Bar */}
       <ScrollProgress />

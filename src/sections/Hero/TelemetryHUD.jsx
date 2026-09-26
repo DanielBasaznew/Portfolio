@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Terminal,
   Activity,
@@ -22,6 +22,7 @@ const INITIAL_TRACES = [
 export const TelemetryHUD = ({ className = '' }) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
+  const hudRef = useRef(null);
 
   // Cycling trace stream animation (respects user control and prefers-reduced-motion)
   useEffect(() => {
@@ -39,11 +40,61 @@ export const TelemetryHUD = ({ className = '' }) => {
     return () => clearInterval(interval);
   }, [isPlaying]);
 
+  const handleMouseMove = (e) => {
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.matchMedia('(pointer: fine)').matches) return;
+
+    const el = hudRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    el.style.setProperty('--hud-x', `${x}px`);
+    el.style.setProperty('--hud-y', `${y}px`);
+    el.style.setProperty('--hud-opacity', '1');
+
+    // Subtle 3D tilt: max ±1.5 deg
+    const normX = (x / rect.width - 0.5) * 2;
+    const normY = (y / rect.height - 0.5) * 2;
+    el.style.setProperty('--hud-rotate-y', `${(normX * 1.5).toFixed(2)}deg`);
+    el.style.setProperty('--hud-rotate-x', `${(-normY * 1.5).toFixed(2)}deg`);
+  };
+
+  const handleMouseLeave = () => {
+    const el = hudRef.current;
+    if (!el) return;
+    el.style.setProperty('--hud-opacity', '0');
+    el.style.setProperty('--hud-rotate-y', '0deg');
+    el.style.setProperty('--hud-rotate-x', '0deg');
+  };
+
   return (
     <div
-      className={`relative rounded-md border border-border-medium bg-surface-card/90 backdrop-blur-md shadow-card overflow-hidden font-mono text-xs select-none ${className}`}
+      ref={hudRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: 'perspective(1000px) rotateX(var(--hud-rotate-x, 0deg)) rotateY(var(--hud-rotate-y, 0deg))',
+        transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+        willChange: 'transform',
+      }}
+      className={`relative rounded-md border border-border-medium bg-surface-card/90 backdrop-blur-md shadow-card overflow-hidden font-mono text-xs select-none hover:border-brand-indigo/50 hover:shadow-card-hover ${className}`}
       aria-label="Engineering Architecture Telemetry Console"
     >
+      {/* Holographic Cursor Spotlight Layer */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 rounded-[inherit]"
+        style={{
+          opacity: 'var(--hud-opacity, 0)',
+          background: 'radial-gradient(380px circle at var(--hud-x, 50%) var(--hud-y, 50%), rgba(56, 189, 248, 0.08), transparent 75%)',
+          willChange: 'opacity',
+        }}
+        aria-hidden="true"
+      />
+
       {/* Console Top Bar */}
       <div className="flex items-center justify-between px-3.5 py-2.5 bg-surface-elevated/70 border-b border-border-subtle">
         <div className="flex items-center gap-2">

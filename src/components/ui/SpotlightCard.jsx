@@ -5,6 +5,15 @@ const SPOTLIGHT_COLORS = {
   cyan: 'rgba(56, 189, 248, 0.12)',
   emerald: 'rgba(16, 185, 129, 0.12)',
   amber: 'rgba(245, 158, 11, 0.12)',
+  rose: 'rgba(244, 63, 94, 0.12)',
+};
+
+const BORDER_GLOW_COLORS = {
+  indigo: 'rgba(99, 102, 241, 0.45)',
+  cyan: 'rgba(56, 189, 248, 0.45)',
+  emerald: 'rgba(16, 185, 129, 0.45)',
+  amber: 'rgba(245, 158, 11, 0.45)',
+  rose: 'rgba(244, 63, 94, 0.45)',
 };
 
 const BORDER_HOVER_COLORS = {
@@ -12,16 +21,18 @@ const BORDER_HOVER_COLORS = {
   cyan: 'hover:border-brand-cyan/60',
   emerald: 'hover:border-brand-emerald/60',
   amber: 'hover:border-brand-amber/60',
+  rose: 'hover:border-brand-rose/60',
 };
 
 /**
  * SpotlightCard Component
- * High-performance, hardware-accelerated interactive card with a cursor-following radial spotlight.
+ * High-performance, hardware-accelerated interactive card with a cursor-following radial spotlight
+ * and cursor-reactive luminous border illumination.
  * 
  * Features:
  * - Guarantees visual boundary persistence (card NEVER disappears or flattens on hover)
  * - Zero React state re-renders on mousemove (direct CSS variable updates on container ref)
- * - Smooth elevation (-translate-y-1) and luminous border transition
+ * - Smooth elevation and luminous border transition
  * - Disabled automatically on touch devices and prefers-reduced-motion environments
  */
 export const SpotlightCard = ({
@@ -58,6 +69,7 @@ export const SpotlightCard = ({
   };
 
   const radialColor = SPOTLIGHT_COLORS[spotlightColor] || SPOTLIGHT_COLORS.indigo;
+  const borderGlowColor = BORDER_GLOW_COLORS[spotlightColor] || BORDER_GLOW_COLORS.indigo;
   const borderHoverClass = BORDER_HOVER_COLORS[spotlightColor] || BORDER_HOVER_COLORS.indigo;
 
   return (
@@ -65,7 +77,7 @@ export const SpotlightCard = ({
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`group relative rounded-md bg-surface-card border border-border-medium shadow-card hover:shadow-card-hover ${borderHoverClass} hover:-translate-y-1 transition-all duration-200 overflow-hidden ${className}`}
+      className={`group relative rounded-md bg-surface-card border border-border-medium shadow-card hover:shadow-card-hover ${borderHoverClass} hover:-translate-y-0.5 sm:hover:-translate-y-1 transition-all duration-200 overflow-hidden ${className}`}
       {...props}
     >
       {/* Dynamic Cursor Spotlight Layer */}
@@ -73,7 +85,21 @@ export const SpotlightCard = ({
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 rounded-[inherit]"
         style={{
           opacity: 'var(--spotlight-opacity, 0)',
-          background: `radial-gradient(420px circle at var(--spotlight-x, 0px) var(--spotlight-y, 0px), ${radialColor}, transparent 75%)`,
+          background: `radial-gradient(380px circle at var(--spotlight-x, 0px) var(--spotlight-y, 0px), ${radialColor}, transparent 75%)`,
+          willChange: 'opacity',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Luminous Border Illumination Layer following cursor */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 rounded-[inherit] p-[1px]"
+        style={{
+          opacity: 'var(--spotlight-opacity, 0)',
+          background: `radial-gradient(220px circle at var(--spotlight-x, 0px) var(--spotlight-y, 0px), ${borderGlowColor}, transparent 70%)`,
+          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          WebkitMaskComposite: 'xor',
+          maskComposite: 'exclude',
           willChange: 'opacity',
         }}
         aria-hidden="true"
@@ -86,3 +112,4 @@ export const SpotlightCard = ({
     </Component>
   );
 };
+

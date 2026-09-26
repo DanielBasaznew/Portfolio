@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/ui/Container';
 import { ConvergenceDiagram } from './ConvergenceDiagram';
 import { CareerEvolution } from './CareerEvolution';
 import { Reveal } from '../../components/motion/Reveal';
+import { SpotlightCard } from '../../components/ui/SpotlightCard';
 import { Terminal } from 'lucide-react';
 
 const PROOF_POINTS = [
@@ -30,9 +31,58 @@ const PROOF_POINTS = [
 ];
 
 export const About = () => {
+  const aboutRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.matchMedia('(pointer: fine)').matches) return;
+
+    const el = aboutRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    el.style.setProperty('--about-x', `${x}px`);
+    el.style.setProperty('--about-y', `${y}px`);
+    el.style.setProperty('--about-opacity', '1');
+  };
+
+  const handleMouseLeave = () => {
+    const el = aboutRef.current;
+    if (!el) return;
+    el.style.setProperty('--about-opacity', '0');
+  };
+
   return (
-    <Section id="about" hasDivider className="overflow-hidden">
-      <Container>
+    <Section
+      id="about"
+      ref={aboutRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      hasDivider
+      className="overflow-hidden"
+    >
+      {/* Subtle localized atmospheric indigo glow behind About narrative & matrix */}
+      <div
+        className="pointer-events-none absolute top-1/3 -right-24 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(99,102,241,0.06)_0%,transparent_70%)] blur-3xl -z-10"
+        aria-hidden="true"
+      />
+
+      {/* Ambient Cursor-Reactive Spotlight Layer across About */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 overflow-hidden"
+        style={{
+          opacity: 'var(--about-opacity, 0)',
+          background: 'radial-gradient(650px circle at var(--about-x, 50%) var(--about-y, 50%), rgba(99, 102, 241, 0.065), rgba(56, 189, 248, 0.025) 45%, transparent 70%)',
+          willChange: 'opacity',
+        }}
+        aria-hidden="true"
+      />
+
+      <Container className="relative z-10">
         {/* Section Header */}
         <Reveal direction="up" duration={600}>
           <div className="space-y-3 mb-12">
@@ -73,8 +123,12 @@ export const About = () => {
               </p>
             </div>
 
-            {/* Personal Engineering Statement Card */}
-            <div className="p-4 sm:p-5 rounded-md bg-surface-elevated/70 border border-brand-indigo/30 shadow-sm relative overflow-hidden">
+            {/* Personal Engineering Statement Card (Cursor-Reactive SpotlightCard) */}
+            <SpotlightCard
+              spotlightColor="indigo"
+              contentClassName="p-4 sm:p-5"
+              className="rounded-md bg-surface-elevated/70 border-brand-indigo/30 shadow-sm relative overflow-hidden"
+            >
               <div className="flex items-center gap-2 mb-2 font-mono text-xs text-brand-indigo uppercase tracking-wider font-semibold">
                 <Terminal className="w-3.5 h-3.5 text-brand-indigo" />
                 <span>ENGINEERING PHILOSOPHY</span>
@@ -82,15 +136,17 @@ export const About = () => {
               <p className="font-sans text-sm sm:text-[14.5px] text-content-primary leading-relaxed italic">
                 “Software provides the deterministic execution plane, but AI provides the cognitive reasoning layer. Real systems engineering begins where modular architecture, verifiable telemetry, and operational resilience converge.”
               </p>
-            </div>
+            </SpotlightCard>
 
-            {/* Compact Proof Points Grid */}
+            {/* Compact Proof Points Grid (Cursor-Reactive SpotlightCards) */}
             <div className="pt-2">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {PROOF_POINTS.map((pt) => (
-                  <div
+                  <SpotlightCard
                     key={pt.title}
-                    className="p-3 rounded-sm bg-surface-card border border-border-subtle hover:border-brand-emerald/50 hover:bg-surface-elevated hover:shadow-card hover:-translate-y-0.5 transition-all duration-200"
+                    spotlightColor="emerald"
+                    contentClassName="p-3"
+                    className="rounded-sm bg-surface-card border-border-subtle"
                   >
                     <div className="font-mono text-xl sm:text-2xl font-bold text-brand-emerald tracking-tight mb-0.5">
                       {pt.value}
@@ -101,7 +157,7 @@ export const About = () => {
                     <div className="font-mono text-[10px] text-content-muted leading-tight font-medium">
                       {pt.detail}
                     </div>
-                  </div>
+                  </SpotlightCard>
                 ))}
               </div>
             </div>
@@ -121,3 +177,4 @@ export const About = () => {
     </Section>
   );
 };
+

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import { SpotlightCard } from '../../components/ui/SpotlightCard';
 
 const STAGES = [
   {
@@ -55,15 +56,17 @@ export const CareerEvolution = ({ className = '' }) => {
         </span>
       </div>
 
-      {/* Responsive Stages Track */}
+      {/* Responsive Stages Track (Cursor-reactive SpotlightCards) */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
         {STAGES.map((stage, idx) => (
-          <div
+          <SpotlightCard
             key={stage.step}
-            className={`p-2.5 rounded-sm border transition-all duration-200 flex flex-col justify-between ${
+            spotlightColor={stage.highlight ? 'indigo' : 'cyan'}
+            contentClassName="p-2.5 h-full flex flex-col justify-between"
+            className={`rounded-sm transition-all duration-200 ${
               stage.highlight
-                ? 'bg-brand-indigo/15 border-brand-indigo/50 shadow-sm hover:border-brand-indigo hover:-translate-y-0.5'
-                : 'bg-surface-elevated/40 border-border-subtle/70 hover:border-brand-indigo/50 hover:bg-surface-elevated/80 hover:-translate-y-0.5 hover:shadow-card'
+                ? 'bg-brand-indigo/15 border-brand-indigo/50 shadow-sm'
+                : 'bg-surface-elevated/40 border-border-subtle/70'
             }`}
           >
             <div>
@@ -92,9 +95,10 @@ export const CareerEvolution = ({ className = '' }) => {
             <div className="font-mono text-[10px] text-content-dim leading-tight mt-1">
               {stage.sub}
             </div>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
     </div>
   );
 };
+
