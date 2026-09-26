@@ -108,7 +108,13 @@ export const Experience = () => {
                       </span>
 
                       <div className="text-[11px] font-bold text-brand-cyan">
-                        {exp.startYear} · {exp.period.split('–')[1]?.trim() || 'Present'}
+                        {exp.isCurrent
+                          ? `${exp.startYear} · Present`
+                          : exp.period.includes('—')
+                          ? `${exp.startYear} · ${exp.period.split('—')[1]?.trim()}`
+                          : exp.period.includes('–')
+                          ? `${exp.startYear} · ${exp.period.split('–')[1]?.trim()}`
+                          : exp.period}
                       </div>
                       <div className="font-sans text-xs font-semibold text-content-primary line-clamp-1">
                         {exp.organization}

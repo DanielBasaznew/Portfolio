@@ -5,33 +5,33 @@ import { SpotlightCard } from '../../components/ui/SpotlightCard';
 const STAGES = [
   {
     step: '01',
-    label: 'Engineering Foundation',
-    sub: 'ASTU Mechanical Eng (Great Distinction)',
+    label: 'Engineering & Business',
+    sub: 'ASTU Mechanical Eng (Great Distinction) & Harambee Marketing (Degree)',
   },
   {
     step: '02',
-    label: 'Operational Automation',
-    sub: 'Python & Playwright across 25+ channels',
+    label: 'AI/ML Self-Development',
+    sub: 'DeepLearning.AI (Andrew Ng), Deep Learning & GenAI during engineering',
   },
   {
     step: '03',
-    label: 'Software Engineering',
-    sub: 'React, Next.js, APIs, Databases, QA',
+    label: 'Practical AI & Automation',
+    sub: 'AquaSense AI (ASTU A+), PKF (25+ channels), CodSoft ML',
   },
   {
     step: '04',
-    label: 'Machine Learning',
-    sub: 'Deep learning, Generative AI & RAG',
+    label: 'Full-Stack Engineering',
+    sub: 'IBT College Canada: React, Next.js, APIs, Databases, QA & CI/CD',
   },
   {
     step: '05',
     label: 'Agentic AI Systems',
-    sub: 'MCP stdio, tool execution & memory',
+    sub: 'MCP stdio, autonomous tool execution, RAG & Langfuse tracing',
   },
   {
     step: '06',
     label: 'Full Stack AI Engineer',
-    sub: 'Autonomous production AI systems',
+    sub: 'Autonomous production AI systems & scalable architectures',
     highlight: true,
   },
 ];

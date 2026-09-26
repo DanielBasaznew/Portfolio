@@ -30,7 +30,7 @@ export const PROJECTS = [
       'Tenacity',
     ],
     proofPoints: [
-      { label: '42+ TESTS', desc: 'Unit & integration regression suites' },
+      { label: '42+ TESTS', desc: 'Unit & integration test suites passing' },
       { label: 'MCP PROTOCOL', desc: 'Standardized tool & resource transport' },
       { label: 'LANGFUSE TRACING', desc: 'Token, latency & cost telemetry' },
       { label: 'GUARDRAILS', desc: 'Circuit breakers & deterministic retries' },
@@ -166,7 +166,7 @@ export const PROJECTS = [
       'SolidWorks',
     ],
     proofPoints: [
-      { label: 'A+ CAPSTONE', desc: 'Graduation honors at IBT College Canada' },
+      { label: 'A+ CAPSTONE', desc: 'Final Year Project — ASTU Mechanical Engineering' },
       { label: 'EDGE + ML', desc: 'Sensory telemetry to scikit-learn calibration' },
       { label: 'CAD & IOT', desc: 'Mechanical enclosure & hydraulic design' },
     ],
@@ -181,18 +181,18 @@ export const PROJECTS = [
   {
     id: 'whisper-amharic-shewa',
     index: '06',
-    category: 'SPEECH AI',
+    category: 'SPEECH AI / EXPERIMENT',
     title: 'Whisper Speech Fine-Tuning — Amharic Shewa',
-    tagline: 'Acoustic fine-tuning of OpenAI Whisper for low-resource regional dialect speech recognition.',
+    tagline: 'Small experimental project exploring Whisper adaptation for low-resource Amharic Shewa speech recognition.',
     description:
-      'Domain adaptation and fine-tuning of the Whisper automatic speech recognition model for the regional Amharic Shewa dialect, improving transcription accuracy on low-resource audio datasets.',
+      'Small experimental project exploring Whisper adaptation for low-resource Amharic Shewa speech recognition.',
     problem:
       'Off-the-shelf multilingual ASR models demonstrate significantly elevated Word Error Rates (WER) on regional Ethiopian dialects and accented vernacular audio.',
     solution:
-      'Implemented training and evaluation pipelines using PyTorch and Hugging Face Transformers to fine-tune Whisper on domain-specific regional audio corpora.',
+      'Implemented training and evaluation pipelines using PyTorch and Hugging Face Transformers to explore Whisper adaptation for regional speech recognition.',
     technologies: ['PyTorch', 'Hugging Face', 'Whisper', 'Python'],
     proofPoints: [
-      { label: 'LOW-RESOURCE ASR', desc: 'Dialect-adapted acoustic modeling' },
+      { label: 'SMALL EXPERIMENT', desc: 'Regional speech fine-tuning study' },
       { label: 'HUGGING FACE', desc: 'Standardized model pipeline & evaluation' },
     ],
     links: {
@@ -201,6 +201,32 @@ export const PROJECTS = [
       statusText: 'Public Repository',
     },
     access: 'public',
+    featured: false,
+    secondary: true,
+  },
+  {
+    id: 'microsoft-forms-excel-automation',
+    index: '07',
+    category: 'AUDIT AUTOMATION',
+    title: 'Microsoft Forms & Excel Audit Automation',
+    tagline: 'Automated Microsoft Forms and Excel-based audit workflows using Python to reduce repetitive data processing and reporting work.',
+    description:
+      'Automated Microsoft Forms and Excel-based audit workflows using Python to reduce repetitive data processing and reporting work.',
+    problem:
+      'Repetitive manual data entry and spreadsheet formatting for multi-branch field audits created operational overhead and reporting delays.',
+    solution:
+      'Engineered programmatic headless automation and data processing scripts with Python, Playwright, Selenium, Pandas, and OpenPyXL to ingest form responses and generate standardized audit reports.',
+    technologies: ['Python', 'Selenium', 'Playwright', 'Pandas', 'OpenPyXL'],
+    proofPoints: [
+      { label: 'AUDIT PIPELINE', desc: 'Forms ingestion to Excel reporting' },
+      { label: 'REDUCED OVERHEAD', desc: 'Automated repetitive reconciliation' },
+    ],
+    links: {
+      github: null,
+      demo: null,
+      statusText: 'Verified Operational Asset',
+    },
+    access: 'private',
     featured: false,
     secondary: true,
   },

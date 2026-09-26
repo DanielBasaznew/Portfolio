@@ -23,7 +23,7 @@ const PILLARS = [
     borderColor: 'border-brand-cyan/30 hover:border-brand-cyan/60',
     accentColor: 'text-brand-cyan',
     spotlightColor: 'cyan',
-    concepts: ['Process automation', 'Workflow optimization', 'Stakeholder communication', 'Business ROI focus'],
+    concepts: ['Marketing Management degree', 'Workflow & process automation', 'Stakeholder communication', 'Business ROI focus'],
   },
   {
     id: 'p3',

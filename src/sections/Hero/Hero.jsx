@@ -40,8 +40,8 @@ const PROOF_METRICS = [
   },
   {
     value: '42+',
-    label: 'Agent System Tests',
-    context: 'Automated evaluation & regression test suites',
+    label: 'Unit & Integration Tests',
+    context: '4 automated regression test suites',
   },
 ];
 

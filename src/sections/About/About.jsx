@@ -20,13 +20,13 @@ const PROOF_POINTS = [
   },
   {
     value: '42+',
-    title: 'Agent System Tests',
-    detail: 'Regression test coverage for tool-calling agents',
+    title: 'Unit & Integration',
+    detail: 'Automated test suites passing across agent systems',
   },
   {
     value: 'A+',
     title: 'AquaSense AI Capstone',
-    detail: 'Graduation honors at IBT College Canada',
+    detail: 'Final Year Project — ASTU Mechanical Engineering',
   },
 ];
 
@@ -111,15 +111,15 @@ export const About = () => {
             {/* Story Block */}
             <div className="space-y-4 text-sm sm:text-base text-content-secondary font-sans leading-relaxed">
               <p>
-                My foundation began in <strong className="text-content-primary font-semibold">Mechanical Engineering</strong> at Adama Science and Technology University (ASTU), graduating with <span className="text-brand-cyan font-mono text-xs px-1.5 py-0.5 rounded-xs bg-surface-elevated border border-border-subtle">Great Distinction</span>. Mechanical systems instill a relentless discipline: respecting physical constraints, debugging complex multivariable dynamics, and designing for structural tolerances before code is even written.
+                My foundation began in <strong className="text-content-primary font-semibold">Mechanical Engineering</strong> at Adama Science and Technology University (ASTU), graduating with <span className="text-brand-cyan font-mono text-xs px-1.5 py-0.5 rounded-xs bg-surface-elevated border border-border-subtle">Great Distinction</span>, pursued alongside a concurrent degree in <strong className="text-content-primary font-semibold">Marketing Management</strong> at Harambee University. Mechanical systems instilled relentless physical and multivariable systems rigor, while marketing management grounded technical architecture in customer satisfaction and commercial ROI.
               </p>
               
               <p>
-                In the field at <strong className="text-content-primary font-semibold">PKF, Heineken, and Twinkle</strong>, this mindset translated directly into operational bottlenecks. Instead of treating manual audits and reporting as unavoidable overhead, I engineered programmatic pipelines using Python, Pandas, Playwright, and Selenium across <strong className="text-content-primary font-semibold">25+ regional distribution channels</strong>, slashing manual processing time by over <strong className="text-content-primary font-semibold">80%</strong>. Operations became software.
+                While still studying Mechanical Engineering, I became intensely driven by programming, machine learning, and artificial intelligence—independently completing formal specializations in <strong className="text-content-primary font-semibold">Machine Learning, Deep Learning, Generative AI, and Python</strong>, including Andrew Ng’s DeepLearning.AI curricula. I applied this directly in engineering projects and internships: developing the <strong className="text-brand-indigo font-semibold">AquaSense AI</strong> precision irrigation capstone (A+), completing a machine learning internship at CodSoft, and engineering automated audit pipelines across <strong className="text-content-primary font-semibold">25+ regional distribution channels</strong> at PKF, slashing manual processing time by over <strong className="text-content-primary font-semibold">80%</strong>.
               </p>
 
               <p>
-                Through rigorous software engineering at <strong className="text-content-primary font-semibold">IBT College Canada</strong>, I solidified full-stack architecture — building performant React/Next.js interfaces, streaming APIs, robust schema validations, and CI/CD testing suites. Today, that entire foundation powers production <strong className="text-brand-indigo font-semibold">Agentic AI & LLM Systems</strong>, combining Model Context Protocol (MCP), vector retrieval, and deterministic reliability guardrails.
+                After graduating from Mechanical Engineering, I joined <strong className="text-content-primary font-semibold">IBT College Canada</strong> to synthesize this foundation with modern full-stack development—mastering React, Next.js, backend APIs, relational and vector databases, automated QA testing, and CI/CD pipelines. Today, that entire progression converges into production <strong className="text-brand-indigo font-semibold">Agentic AI & Full-Stack Systems</strong>, integrating Model Context Protocol (MCP), vector retrieval, and deterministic reliability guardrails.
               </p>
             </div>
 

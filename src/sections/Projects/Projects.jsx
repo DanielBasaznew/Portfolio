@@ -10,7 +10,7 @@ import { Reveal } from '../../components/motion/Reveal';
 export const Projects = () => {
   const flagship = PROJECTS.find((p) => p.featured);
   const coreProjects = PROJECTS.filter((p) => !p.featured && !p.secondary);
-  const secondary = PROJECTS.find((p) => p.secondary);
+  const secondaryProjects = PROJECTS.filter((p) => p.secondary);
 
   return (
     <Section id="projects" hasDivider className="overflow-hidden">
@@ -52,14 +52,18 @@ export const Projects = () => {
           ))}
         </div>
 
-        {/* 3. Secondary Research / Speech AI Highlight (Project 06) */}
-        {secondary && (
+        {/* 3. Secondary Research & Workflow Automation (Projects 06 & 07) */}
+        {secondaryProjects.length > 0 && (
           <Reveal direction="up" delay={120} duration={600} className="mt-8">
             <div className="mb-3 flex items-center justify-between font-mono text-[11px] text-content-muted">
               <span>SPECIALIZED RESEARCH & ADAPTATION</span>
-              <span className="text-content-muted font-medium">LOW-RESOURCE ASR</span>
+              <span className="text-content-muted font-medium">EXPLORATORY & WORKFLOW AUTOMATION</span>
             </div>
-            <SecondaryProjectCard project={secondary} />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {secondaryProjects.map((project) => (
+                <SecondaryProjectCard key={project.id} project={project} />
+              ))}
+            </div>
           </Reveal>
         )}
       </Container>
