@@ -121,82 +121,90 @@ export const Navbar = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <header
-      role="banner"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        isScrolled
-          ? 'bg-canvas-base/85 backdrop-blur-md border-b border-border-subtle shadow-hud py-2.5'
-          : 'bg-canvas-base/40 backdrop-blur-xs border-b border-transparent py-3.5'
-      }`}
-    >
-      <Container className="flex items-center justify-between">
-        {/* Left: Monogram / Brand */}
-        <a
-          href="#"
-          className="group flex items-center gap-2 font-mono text-sm tracking-wider font-semibold text-content-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-indigo rounded-xs"
-          aria-label="Daniel Basaznew - Home"
-        >
-          <span className="w-7 h-7 flex items-center justify-center rounded-xs bg-surface-elevated border border-border-medium group-hover:border-brand-indigo/50 transition-colors text-xs text-brand-indigo font-bold">
-            DB
-          </span>
-          <span className="tracking-widest hidden sm:inline-block">
-            DANIEL<span className="text-brand-indigo">.</span>B
-          </span>
-          <span className="text-[10px] text-content-dim font-mono hidden md:inline-block px-1.5 py-0.5 rounded-xs bg-surface-card border border-border-subtle">
-            AI.SYS
-          </span>
-        </a>
-
-        {/* Center: Desktop Navigation Links */}
-        <nav
-          role="navigation"
-          aria-label="Primary Navigation"
-          className="hidden md:flex items-center"
-        >
-          <NavLinks activeSection={activeSection} />
-        </nav>
-
-        {/* Right: Availability Status & GitHub */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <AvailabilityIndicator
-            compact
-            className="hidden sm:inline-flex"
-            statusText="Available for AI Eng"
-          />
-
+    <>
+      <header
+        role="banner"
+        style={{
+          transform: 'translate3d(0, 0, 0)',
+          WebkitTransform: 'translate3d(0, 0, 0)',
+        }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+          isScrolled
+            ? 'bg-canvas-base/85 backdrop-blur-md border-b border-border-subtle shadow-hud py-2.5'
+            : 'bg-canvas-base/40 backdrop-blur-xs border-b border-transparent py-3.5'
+        }`}
+      >
+        <Container className="flex items-center justify-between">
+          {/* Left: Monogram / Brand */}
           <a
-            href="https://github.com/DanielBasaznew"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Daniel Basaznew on GitHub"
-            className="p-1.5 rounded-sm text-content-secondary hover:text-content-primary hover:bg-surface-elevated/70 border border-transparent hover:border-border-subtle transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-indigo"
-            title="GitHub: DanielBasaznew"
+            href="#"
+            className="group flex items-center gap-2 font-mono text-sm tracking-wider font-semibold text-content-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-indigo rounded-xs"
+            aria-label="Daniel Basaznew - Home"
           >
-            <GithubIcon className="w-4 h-4" />
+            <span className="w-7 h-7 flex items-center justify-center rounded-xs bg-surface-elevated border border-border-medium group-hover:border-brand-indigo/50 transition-colors text-xs text-brand-indigo font-bold">
+              DB
+            </span>
+            <span className="tracking-widest hidden sm:inline-block">
+              DANIEL<span className="text-brand-indigo">.</span>B
+            </span>
+            <span className="text-[10px] text-content-dim font-mono hidden md:inline-block px-1.5 py-0.5 rounded-xs bg-surface-card border border-border-subtle">
+              AI.SYS
+            </span>
           </a>
 
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-navigation"
-            aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-            className="md:hidden p-1.5 rounded-sm text-content-secondary hover:text-content-primary hover:bg-surface-elevated/70 border border-border-subtle focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-indigo"
+          {/* Center: Desktop Navigation Links */}
+          <nav
+            role="navigation"
+            aria-label="Primary Navigation"
+            className="hidden md:flex items-center"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </Container>
+            <NavLinks activeSection={activeSection} />
+          </nav>
 
-      {/* Mobile Drawer Menu */}
+          {/* Right: Availability Status & GitHub */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <AvailabilityIndicator
+              compact
+              className="hidden sm:inline-flex"
+              statusText="Available for AI Eng"
+            />
+
+            <a
+              href="https://github.com/DanielBasaznew"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Daniel Basaznew on GitHub"
+              className="p-1.5 rounded-sm text-content-secondary hover:text-content-primary hover:bg-surface-elevated/70 border border-transparent hover:border-border-subtle transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-indigo"
+              title="GitHub: DanielBasaznew"
+            >
+              <GithubIcon className="w-4 h-4" />
+            </a>
+
+            {/* Mobile Menu Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+              className="md:hidden relative z-20 pointer-events-auto p-1.5 rounded-sm text-content-secondary hover:text-content-primary bg-surface-elevated/40 hover:bg-surface-elevated/80 border border-border-subtle focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-indigo cursor-pointer transition-colors"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+        </Container>
+      </header>
+
+      {/* Mobile Drawer Menu - Sibling of header to prevent containing block trap by backdrop-filter */}
       {mobileMenuOpen && (
         <div
           id="mobile-navigation"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="md:hidden fixed top-14 left-0 right-0 bottom-0 bg-canvas-base/98 backdrop-blur-2xl border-t border-border-subtle z-50 overflow-y-auto px-6 py-6 flex flex-col justify-between"
+          className={`md:hidden fixed left-0 right-0 bottom-0 bg-canvas-base/98 backdrop-blur-2xl border-t border-border-subtle z-40 overflow-y-auto px-6 py-6 flex flex-col justify-between transition-all duration-200 ${
+            isScrolled ? 'top-[53px]' : 'top-[61px]'
+          }`}
         >
           <div>
             <div className="mb-6 pb-4 border-b border-border-subtle">
@@ -238,7 +246,7 @@ export const Navbar = () => {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 };
 
