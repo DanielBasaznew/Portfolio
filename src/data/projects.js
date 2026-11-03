@@ -46,16 +46,18 @@ export const PROJECTS = [
   {
     id: 'london-cafe-fleet-management',
     index: '02',
-    category: 'ENTERPRISE FLEET & ASSETS',
+    category: 'AI-POWERED (RAG) / FLEET PLATFORM',
     title: 'London Cafe Fleet & Asset Management',
-    tagline: 'Enterprise commercial fleet logistics, driver assignment governance, statutory compliance & automated Telegram escalation engine.',
+    tagline: 'Enterprise commercial fleet & regulatory compliance platform driven by an embedded AI-powered (RAG) assistant and automated Telegram escalation.',
     description:
-      'A production-grade commercial vehicle fleet, licensed driver, and statutory regulatory compliance management platform engineered exclusively for London Cafe commercial logistics.',
+      'A production-grade commercial vehicle fleet, licensed driver, and statutory regulatory compliance management platform engineered exclusively for London Cafe, featuring an embedded AI-powered Retrieval-Augmented Generation (RAG) assistant.',
     problem:
-      'Multi-branch commercial food and beverage fleet operations faced manual paperwork bottlenecks, untracked vehicle-driver handovers, and severe regulatory exposure from expired statutory documents (Libbre, Bolo, Insurance, COCs).',
+      'Multi-branch commercial food and beverage fleet operations faced manual paperwork bottlenecks, untracked vehicle-driver handovers, and severe regulatory exposure from expired statutory documents, lacking an intelligent system for rapid regulatory query retrieval.',
     solution:
-      'Architected an enterprise platform with Next.js 16 (App Router), React 19, Supabase (PostgreSQL 15+ with RLS), and TypeScript. Features 1-to-1 driver custody enforcement, atomic document renewals, multi-threshold Telegram reminder notifications with atomic PostgreSQL concurrency leases, and an embedded Gemini AI assistant.',
+      'Architected an enterprise platform with Next.js 16 (App Router), React 19, Supabase (PostgreSQL 15+ with RLS), and TypeScript. Integrates an embedded AI-powered (RAG) assistant leveraging Google Gemini with dynamic document chunk retrieval, 1-to-1 driver custody governance, atomic renewal workflows, and multi-threshold Telegram reminder notifications with atomic PostgreSQL concurrency leases.',
     technologies: [
+      'AI-Powered (RAG)',
+      'Google Gemini',
       'Next.js 16',
       'React 19',
       'TypeScript',
@@ -63,15 +65,14 @@ export const PROJECTS = [
       'PostgreSQL',
       'Tailwind CSS',
       'Telegram API',
-      'Google Gemini',
       'Vitest',
       'Playwright',
     ],
     proofPoints: [
+      { label: 'AI-POWERED (RAG)', desc: 'Domain-specific regulatory documentation retrieval' },
       { label: '344+ TESTS', desc: 'In-memory PGlite & Vitest database suites passing' },
       { label: '8 COMPLIANCE TYPES', desc: 'Statutory document lifecycles & atomic renewals' },
       { label: 'TELEGRAM ENGINE', desc: 'Multi-threshold automated reminder dispatcher' },
-      { label: 'RBAC & AUDIT', desc: 'PostgreSQL RLS policies & immutable audit log' },
     ],
     links: {
       github: null,

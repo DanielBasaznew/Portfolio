@@ -26,9 +26,9 @@ Production-oriented agentic runtime integrating Model Context Protocol (MCP) std
 - **Repository:** [github.com/DanielBasaznew/AI-Engineering-Assistant](https://github.com/DanielBasaznew/AI-Engineering-Assistant)
 
 ### 02. London Cafe Fleet & Asset Management System
-Enterprise-grade commercial vehicle fleet logistics, driver assignment governance, statutory compliance validation, and automated Telegram escalation engine.
-- **Capabilities:** 1-to-1 driver custody governance, 8 statutory document lifecycles (Libbre, Bolo, Insurance, COCs), atomic document replacement, automated multi-threshold Telegram reminder engine with PostgreSQL concurrency leases, verified CSV reporting, immutable audit logs, and embedded Gemini AI system assistant.
-- **Stack:** Next.js 16 (App Router, Turbopack), React 19, TypeScript, Supabase (PostgreSQL 15+ with RLS), Tailwind CSS v4, Telegram Bot API, Google Gemini API, Vitest (344 tests), Playwright.
+Enterprise-grade commercial vehicle fleet logistics, driver assignment governance, and statutory compliance validation driven by an embedded **AI-powered Retrieval-Augmented Generation (RAG)** assistant and automated Telegram escalation engine.
+- **Capabilities:** AI-powered (RAG) assistant retrieving authoritative operational & regulatory guides with role-based contextual filtering (Facility Manager vs. Viewer), 1-to-1 driver custody governance, 8 statutory document lifecycles (Libbre, Bolo, Insurance, COCs), atomic document replacement, automated multi-threshold Telegram reminder engine with PostgreSQL concurrency leases, verified CSV reporting, immutable audit logs.
+- **Stack:** AI-Powered (RAG), Google Gemini API, Next.js 16 (App Router, Turbopack), React 19, TypeScript, Supabase (PostgreSQL 15+ with RLS), Tailwind CSS v4, Telegram Bot API, Vitest (344 tests), Playwright.
 - **Repository:** [github.com/DanielBasaznew/London-Cafe-Fleet-Asset-Management-System](https://github.com/DanielBasaznew/London-Cafe-Fleet-Asset-Management-System)
 
 ### 03. Azmera-Hub
