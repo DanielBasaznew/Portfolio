@@ -49,6 +49,7 @@ export const SKILL_DOMAINS = [
     levelColor: 'text-brand-cyan border-brand-cyan/30 bg-brand-cyan/10',
     skills: [
       'JavaScript',
+      'TypeScript',
       'React',
       'Next.js',
       'Vite',
@@ -77,6 +78,7 @@ export const SKILL_DOMAINS = [
     skills: [
       'Python',
       'PostgreSQL',
+      'Supabase',
       'Neon',
       'PostGIS',
       'SQLite',

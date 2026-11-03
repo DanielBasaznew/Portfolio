@@ -25,35 +25,47 @@ Production-oriented agentic runtime integrating Model Context Protocol (MCP) std
 - **Stack:** Python, FastAPI, Model Context Protocol (MCP), Google Gemini API, ChromaDB, Langfuse, Pydantic, Docker.
 - **Repository:** [github.com/DanielBasaznew/AI-Engineering-Assistant](https://github.com/DanielBasaznew/AI-Engineering-Assistant)
 
-### 02. Azmera-Hub
+### 02. London Cafe Fleet & Asset Management System
+Enterprise-grade commercial vehicle fleet logistics, driver assignment governance, statutory compliance validation, and automated Telegram escalation engine.
+- **Capabilities:** 1-to-1 driver custody governance, 8 statutory document lifecycles (Libbre, Bolo, Insurance, COCs), atomic document replacement, automated multi-threshold Telegram reminder engine with PostgreSQL concurrency leases, verified CSV reporting, immutable audit logs, and embedded Gemini AI system assistant.
+- **Stack:** Next.js 16 (App Router, Turbopack), React 19, TypeScript, Supabase (PostgreSQL 15+ with RLS), Tailwind CSS v4, Telegram Bot API, Google Gemini API, Vitest (344 tests), Playwright.
+- **Repository:** [github.com/DanielBasaznew/London-Cafe-Fleet-Asset-Management-System](https://github.com/DanielBasaznew/London-Cafe-Fleet-Asset-Management-System)
+
+### 03. Azmera-Hub
 Cursor AI Hackathon agritech marketplace monorepo designed for agricultural supply-chain coordination and decentralized grain distribution.
 - **Capabilities:** Autonomous dispatch coordination, geospatial query resolution, sub-50ms API responses, type-safe transactions.
 - **Stack:** Next.js 14 (App Router), React 18, Fastify, TypeScript, PostGIS, Neon Serverless PostgreSQL, Drizzle ORM, Tailwind CSS.
 - **Repository:** [github.com/DanielBasaznew/Azmera-Hub](https://github.com/DanielBasaznew/Azmera-Hub)
 
-### 03. Retail Photo, Location & Summary Combiner
+### 04. Retail Photo, Location & Summary Combiner
 Enterprise automated intelligence pipeline transforming disparate Telegram channel media into verified, structured multi-market audit matrices.
 - **Capabilities:** Telegram MTProto scraping, multimodal visual verification via Gemini 1.5 Flash Vision, fuzzy entity resolution (>85% matching threshold), automated Excel audit reports.
 - **Stack:** Python, Telethon, Google Gemini 1.5 Flash Vision, RapidFuzz, Pandas, OpenPyXL.
 - **Repository:** [github.com/DanielBasaznew/Retail-photo-location-and-summary-combiner](https://github.com/DanielBasaznew/Retail-photo-location-and-summary-combiner)
 
-### 04. Asset Verification Dashboard
+### 05. Asset Verification Dashboard
 High-throughput operational telemetry and asset audit console engineered for logistics monitoring and real-time field status tracking.
 - **Capabilities:** Dynamic query filtering, interactive status distributions, sub-second relational queries with zero cold-starts.
 - **Stack:** Next.js 14, React 18, Tailwind CSS, Recharts, Neon Serverless PostgreSQL, Drizzle ORM.
 - **Repository:** [github.com/DanielBasaznew/asset-verification-dashboard](https://github.com/DanielBasaznew/asset-verification-dashboard)
 
-### 05. AquaSense AI / Smart Irrigation Automation
+### 06. AquaSense AI / Smart Irrigation Automation
 Multi-sensor IoT precision agriculture controller and predictive irrigation scheduling system (ASTU Mechanical Engineering Capstone, Grade A+).
 - **Capabilities:** Sensor telemetry processing, predictive soil-moisture inference (96.88% accuracy), automated actuator relay control.
 - **Stack:** Python, Scikit-Learn (Random Forest), ESP32 Microcontroller, C++, Wokwi IoT Simulation, SolidWorks CAD.
 - **Repository:** [github.com/DanielBasaznew/AquaSense-AI](https://github.com/DanielBasaznew/AquaSense-AI)
 
-### 06. Whisper Speech Fine-Tuning for Amharic Shewa Dialect
+### 07. Whisper Speech Fine-Tuning for Amharic Shewa Dialect
 Domain-adapted automatic speech recognition model tailored for regional low-resource phonetic variants of Ethiopian Semitic languages.
 - **Capabilities:** Phonetic transcription normalization, audio feature extraction, seq2seq fine-tuning.
 - **Stack:** PyTorch, Hugging Face Transformers, OpenAI Whisper-Small, Amharic Speech Corpus, Librosa.
 - **Repository:** [github.com/DanielBasaznew/Whisper-Amharic-Shewa-FineTuning](https://github.com/DanielBasaznew/Whisper-Amharic-Shewa-FineTuning)
+
+### 08. Microsoft Forms & Excel Audit Automation
+Automated Microsoft Forms and Excel-based audit workflows using Python, Selenium, Playwright, Pandas, and OpenPyXL to reduce repetitive data processing and reporting overhead.
+- **Capabilities:** Headless form response ingestion, multi-branch data validation, automated multi-sheet Excel generation.
+- **Stack:** Python, Selenium, Playwright, Pandas, OpenPyXL.
+- **Repository:** [github.com/DanielBasaznew/microsoft-form-and-excel-automation](https://github.com/DanielBasaznew/microsoft-form-and-excel-automation)
 
 ---
 
@@ -62,9 +74,9 @@ Domain-adapted automatic speech recognition model tailored for regional low-reso
 | Domain | Technologies & Systems |
 | :--- | :--- |
 | **AI & Agentic Systems** | Model Context Protocol (MCP), CrewAI Multi-Agent, LangChain, RAG Architecture, ChromaDB, SentenceTransformers, Gemini/OpenAI/Anthropic APIs, Tenacity Guardrails, Langfuse Tracing |
-| **Frontend Engineering** | React 19, JavaScript (ES2024), JSX, Vite, Tailwind CSS, Lucide React, Space Grotesk, JetBrains Mono |
-| **Backend & Databases** | Python 3.11+, FastAPI, Fastify, PostgreSQL (Neon Serverless), SQLite, Pydantic, REST & SSE Streaming APIs |
-| **Enterprise Automation** | Playwright, Selenium, Telethon (MTProto), RapidFuzz, Pandas, NumPy, OpenPyXL, n8n |
+| **Frontend Engineering** | React 19, JavaScript (ES2024), TypeScript, Next.js 16, Vite, Tailwind CSS, Lucide React, Space Grotesk, JetBrains Mono |
+| **Backend & Databases** | Python 3.11+, FastAPI, Fastify, Supabase (PostgreSQL 15+), PostgreSQL (Neon Serverless), SQLite, Pydantic, REST & SSE Streaming APIs |
+| **Enterprise Automation** | Telegram Bot API, Playwright, Selenium, Telethon (MTProto), RapidFuzz, Pandas, NumPy, OpenPyXL, n8n |
 | **DevOps & Infrastructure** | Git, GitHub, Docker, GitHub Actions, Vercel Edge, Linux Shell |
 
 ---

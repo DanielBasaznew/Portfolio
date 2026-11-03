@@ -44,8 +44,46 @@ export const PROJECTS = [
     featured: true,
   },
   {
-    id: 'azmera-hub',
+    id: 'london-cafe-fleet-management',
     index: '02',
+    category: 'ENTERPRISE FLEET & ASSETS',
+    title: 'London Cafe Fleet & Asset Management',
+    tagline: 'Enterprise commercial fleet logistics, driver assignment governance, statutory compliance & automated Telegram escalation engine.',
+    description:
+      'A production-grade commercial vehicle fleet, licensed driver, and statutory regulatory compliance management platform engineered exclusively for London Cafe commercial logistics.',
+    problem:
+      'Multi-branch commercial food and beverage fleet operations faced manual paperwork bottlenecks, untracked vehicle-driver handovers, and severe regulatory exposure from expired statutory documents (Libbre, Bolo, Insurance, COCs).',
+    solution:
+      'Architected an enterprise platform with Next.js 16 (App Router), React 19, Supabase (PostgreSQL 15+ with RLS), and TypeScript. Features 1-to-1 driver custody enforcement, atomic document renewals, multi-threshold Telegram reminder notifications with atomic PostgreSQL concurrency leases, and an embedded Gemini AI assistant.',
+    technologies: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'Supabase',
+      'PostgreSQL',
+      'Tailwind CSS',
+      'Telegram API',
+      'Google Gemini',
+      'Vitest',
+      'Playwright',
+    ],
+    proofPoints: [
+      { label: '344+ TESTS', desc: 'In-memory PGlite & Vitest database suites passing' },
+      { label: '8 COMPLIANCE TYPES', desc: 'Statutory document lifecycles & atomic renewals' },
+      { label: 'TELEGRAM ENGINE', desc: 'Multi-threshold automated reminder dispatcher' },
+      { label: 'RBAC & AUDIT', desc: 'PostgreSQL RLS policies & immutable audit log' },
+    ],
+    links: {
+      github: null,
+      demo: null,
+      statusText: 'Private Enterprise System',
+    },
+    access: 'private',
+    featured: false,
+  },
+  {
+    id: 'azmera-hub',
+    index: '03',
     category: 'FULL-STACK / HACKATHON',
     title: 'Azmera-Hub',
     tagline: 'Geospatial marketplace & logistics routing platform for Ethiopian teff supply chains.',
@@ -80,7 +118,7 @@ export const PROJECTS = [
   },
   {
     id: 'retail-photo-location-combiner',
-    index: '03',
+    index: '04',
     category: 'ENTERPRISE AUTOMATION',
     title: 'Retail Photo, Location & Summary Combiner',
     tagline: 'Automated field-audit reconciliation & multi-channel reporting pipeline across 25+ distribution channels.',
@@ -114,7 +152,7 @@ export const PROJECTS = [
   },
   {
     id: 'asset-verification-dashboard',
-    index: '04',
+    index: '05',
     category: 'FULL-STACK / DATA',
     title: 'Asset Verification Dashboard',
     tagline: 'Production operations dashboard for structured enterprise asset verification, filtering, and telemetry.',
@@ -147,7 +185,7 @@ export const PROJECTS = [
   },
   {
     id: 'aquasense-ai',
-    index: '05',
+    index: '06',
     category: 'AI + IoT / ENGINEERING',
     title: 'AquaSense AI / Smart Irrigation',
     tagline: 'Predictive precision irrigation system integrating IoT edge sensors with machine learning calibration.',
@@ -180,7 +218,7 @@ export const PROJECTS = [
   },
   {
     id: 'whisper-amharic-shewa',
-    index: '06',
+    index: '07',
     category: 'SPEECH AI / EXPERIMENT',
     title: 'Whisper Speech Fine-Tuning — Amharic Shewa',
     tagline: 'Small experimental project exploring Whisper adaptation for low-resource Amharic Shewa speech recognition.',
@@ -206,7 +244,7 @@ export const PROJECTS = [
   },
   {
     id: 'microsoft-forms-excel-automation',
-    index: '07',
+    index: '08',
     category: 'AUDIT AUTOMATION',
     title: 'Microsoft Forms & Excel Audit Automation',
     tagline: 'Automated Microsoft Forms and Excel-based audit workflows using Python to reduce repetitive data processing and reporting work.',
